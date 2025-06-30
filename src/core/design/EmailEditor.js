@@ -13,9 +13,9 @@ import {
     BodyWrapper
 } from "./components/userComponents";
 import { RenderNode } from "./utils/RenderNode";
-import { Box, Grid } from "@material-ui/core";
+import { Box, Grid, makeStyles } from "@material-ui/core";
 import Design from "./components/layoutComponents/Design";
-import { jssPreset, makeStyles, StylesProvider, ThemeProvider } from "@material-ui/core";
+import { jssPreset, StylesProvider, ThemeProvider } from "@material-ui/core";
 import { create } from "jss";
 import rtl from "jss-rtl";
 import "react-app-polyfill/ie11";
@@ -23,8 +23,8 @@ import "react-app-polyfill/stable";
 import "react-quill/dist/quill.snow.css";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import "../../assets/css/devices.min.css";
+import "../../assets/css/modern-ui.css";
 import "braft-editor/dist/index.css";
-// import "braft-extensions/dist/color-picker.css";
 import { createTheme } from "../../theme";
 import useSettings from "../../hooks/useSettings";
 import { encodeJson } from "./utils/encryptJson";
@@ -34,13 +34,30 @@ import packageJson from "../../../package.json";
 const { state_version } = packageJson;
 
 const useStyles = makeStyles(() => ({
-    root: {}
+    root: {
+        height: "100vh",
+        overflow: "hidden",
+        backgroundColor: "#f8fafc"
+    },
+    mainContainer: {
+        height: "100%",
+        display: "flex",
+        overflow: "hidden"
+    },
+    designSection: {
+        flex: 1,
+        height: "100%",
+        overflow: "hidden"
+    },
+    rightPanelSection: {
+        width: "380px",
+        height: "100%",
+        borderLeft: "1px solid #e2e8f0",
+        backgroundColor: "#ffffff"
+    }
 }));
 
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
-// const generateClassName = createGenerateClassName({
-//     seed: "EmailEditor"
-// });
 
 export function EmailEditor({
     loadState,
@@ -51,48 +68,43 @@ export function EmailEditor({
     onHtmlOpen,
     ...rest
 }) {
-    useStyles();
+    const classes = useStyles();
     const { settings } = useSettings();
 
     return (
         <ThemeProvider theme={createTheme(settings)}>
             <StylesProvider jss={jss}>
-                <Grid container justifyContent="center" alignContent="center">
-                    <Grid item xs={12}>
-                        <Editor
-                            resolver={{
-                                Button,
-                                Container,
-                                Text,
-                                Image,
-                                Video,
-                                HtmlBox,
-                                CustomDivider,
-                                Resizer,
-                                BodyWrapper
-                            }}
-                            onRender={RenderNode}
-                        >
-                            <Box
-                                display="flex"
-                                justifyContent="space-between"
-                                alignContent="stretch"
-                                position="fixed"
-                                width="100%"
-                                height="100%"
-                            >
+                <div className={classes.root}>
+                    <Editor
+                        resolver={{
+                            Button,
+                            Container,
+                            Text,
+                            Image,
+                            Video,
+                            HtmlBox,
+                            CustomDivider,
+                            Resizer,
+                            BodyWrapper
+                        }}
+                        onRender={RenderNode}
+                    >
+                        <div className={classes.mainContainer}>
+                            <div className={classes.designSection}>
                                 <Design editorState={loadState} />
+                            </div>
+                            <div className={classes.rightPanelSection}>
                                 <RightPanel />
-                                <Footer onPreviewOpen={onPreviewOpen} onHtmlOpen={onHtmlOpen} />
-                            </Box>
-                            <EditorSaveModule
-                                triggerFetchState={triggerFetchState}
-                                getState={getState}
-                                version={loadVersion ? loadVersion : state_version}
-                            />
-                        </Editor>
-                    </Grid>
-                </Grid>
+                            </div>
+                        </div>
+                        <Footer onPreviewOpen={onPreviewOpen} onHtmlOpen={onHtmlOpen} />
+                        <EditorSaveModule
+                            triggerFetchState={triggerFetchState}
+                            getState={getState}
+                            version={loadVersion ? loadVersion : state_version}
+                        />
+                    </Editor>
+                </div>
             </StylesProvider>
         </ThemeProvider>
     );

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { ButtonGroup, Button as MaterialButton } from "@material-ui/core";
+import { ButtonGroup, Button as MaterialButton, Tooltip } from "@material-ui/core";
 import { useEditor } from "@craftjs/core";
 import CodeIcon from "@material-ui/icons/Code";
 import VisibilityIcon from "@material-ui/icons/Visibility";
@@ -11,16 +11,44 @@ import { SvgIcon } from "@material-ui/core";
 const useStyles = makeStyles(theme => ({
     root: {
         position: "fixed",
-        bottom: 22,
-        top: "auto",
-        left: 22,
-        zIndex: 1000
+        bottom: 20,
+        left: 20,
+        zIndex: 1000,
+        display: "flex",
+        gap: theme.spacing(1)
     },
-    customButton: {
-        borderLeftColor: "#fafafa",
-        borderRightColor: "#fafafa"
+    buttonGroup: {
+        background: "#ffffff",
+        borderRadius: "12px",
+        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08)",
+        border: "1px solid #e2e8f0",
+        overflow: "hidden"
+    },
+    button: {
+        borderColor: "transparent",
+        backgroundColor: "transparent",
+        color: "#64748b",
+        padding: theme.spacing(1.5, 2),
+        minWidth: "auto",
+        transition: "all 0.2s ease-in-out",
+        '&:hover': {
+            backgroundColor: "#f8fafc",
+            color: "#3f51b5",
+            borderColor: "transparent"
+        },
+        '&:disabled': {
+            opacity: 0.4,
+            cursor: "not-allowed"
+        },
+        '&:not(:last-child)': {
+            borderRight: "1px solid #e2e8f0"
+        }
+    },
+    iconButton: {
+        fontSize: "20px"
     }
 }));
+
 export function Footer({ onPreviewOpen, onHtmlOpen }) {
     const classes = useStyles();
     const { actions, query, canUndo, canRedo } = useEditor((state, query) => ({
@@ -31,41 +59,52 @@ export function Footer({ onPreviewOpen, onHtmlOpen }) {
 
     return (
         <div className={classes.root}>
-            <ButtonGroup size="small" style={{ background: "#546E7A" }}>
-                <MaterialButton
-                    title="Undo"
-                    onClick={() => {
-                        if (canUndo) {
-                            actions.history.undo();
-                        }
-                    }}
-                >
-                    <SvgIcon htmlColor="#fafafa">
-                        <UndoIcon />
-                    </SvgIcon>
-                </MaterialButton>
-                <MaterialButton
-                    title="Redo"
-                    onClick={() => {
-                        if (canRedo) {
-                            actions.history.redo();
-                        }
-                    }}
-                >
-                    <SvgIcon htmlColor="#fafafa">
-                        <RedoIcon />
-                    </SvgIcon>
-                </MaterialButton>
-                <MaterialButton title="Preview" onClick={onPreviewOpen}>
-                    <SvgIcon htmlColor="#fafafa">
-                        <VisibilityIcon />
-                    </SvgIcon>
-                </MaterialButton>
-                <MaterialButton title="HTML View" onClick={onHtmlOpen}>
-                    <SvgIcon htmlColor="#fafafa">
-                        <CodeIcon />
-                    </SvgIcon>
-                </MaterialButton>
+            <ButtonGroup className={classes.buttonGroup} size="medium" disableElevation>
+                <Tooltip title="Undo" arrow>
+                    <MaterialButton
+                        className={classes.button}
+                        disabled={!canUndo}
+                        onClick={() => {
+                            if (canUndo) {
+                                actions.history.undo();
+                            }
+                        }}
+                    >
+                        <UndoIcon className={classes.iconButton} />
+                    </MaterialButton>
+                </Tooltip>
+                
+                <Tooltip title="Redo" arrow>
+                    <MaterialButton
+                        className={classes.button}
+                        disabled={!canRedo}
+                        onClick={() => {
+                            if (canRedo) {
+                                actions.history.redo();
+                            }
+                        }}
+                    >
+                        <RedoIcon className={classes.iconButton} />
+                    </MaterialButton>
+                </Tooltip>
+                
+                <Tooltip title="Preview Email" arrow>
+                    <MaterialButton 
+                        className={classes.button}
+                        onClick={onPreviewOpen}
+                    >
+                        <VisibilityIcon className={classes.iconButton} />
+                    </MaterialButton>
+                </Tooltip>
+                
+                <Tooltip title="View HTML" arrow>
+                    <MaterialButton 
+                        className={classes.button}
+                        onClick={onHtmlOpen}
+                    >
+                        <CodeIcon className={classes.iconButton} />
+                    </MaterialButton>
+                </Tooltip>
             </ButtonGroup>
         </div>
     );
