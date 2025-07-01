@@ -1,0 +1,257 @@
+# Frontend Code Standards & Patterns for LeadSend
+
+You are working on a React-based frontend application using modern best practices. Follow these rules strictly to maintain code quality and consistency.
+
+## Technology Stack & Dependencies
+
+- **Framework**: React with TypeScript
+- **Build Tool**: Vite
+- **State Management**: React Query for server state, Context API for local/global state
+- **Styling**: TailwindCSS with utility classes
+- **UI Components**: Radix UI primitives with custom components
+- **Form Management**: React Hook Form with Zod validation
+- **Routing**: React Router v6
+- **API Client**: Axios
+- **Testing**: Jest and React Testing Library
+
+## Component Standards
+
+### Component Structure
+- Use function components with hooks (no class components)
+- Always use named exports (avoid default exports)
+- Define TypeScript interfaces for all props
+- Organize imports: external libraries first, then internal modules
+- Structure components in this order:
+  1. Import statements
+  2. Type definitions
+  3. Component definition
+  4. State hooks first
+  5. Custom hooks
+  6. Effects
+  7. Event handlers
+  8. Conditional rendering
+  9. Main render
+
+### Component Patterns
+```typescript
+interface ComponentProps {
+  id: string;
+  name: string;
+  onUpdate: (id: string, data: unknown) => void;
+}
+
+export function ComponentName({ id, name, onUpdate }: ComponentProps) {
+  const [isLoading, setIsLoading] = useState(false);
+  const { data } = useCustomHook(id);
+  
+  useEffect(() => {
+    // Effect logic
+  }, [id]);
+  
+  const handleAction = () => {
+    // Handler logic
+  };
+  
+  if (!data) return <div>Loading...</div>;
+  
+  return (
+    <div className="p-4 bg-white rounded shadow">
+      {/* Component content */}
+    </div>
+  );
+}
+```
+
+## Hook Standards
+
+- Prefix all custom hooks with `use`
+- Each hook should have a single responsibility
+- Use React Query for all data fetching hooks
+- Always specify dependency arrays in useEffect
+- Return objects from custom hooks for better API
+
+### API Hook Pattern
+```typescript
+export const useFeature = (id: string) => {
+  return useQuery({
+    queryKey: ['feature', id],
+    queryFn: () => getFeature(id),
+    enabled: !!id,
+  });
+};
+```
+
+## State Management Rules
+
+- **Server State**: Always use React Query
+- **Local Component State**: Use useState or useReducer
+- **Global State**: Use Context API with proper error boundaries
+- **Complex State Logic**: Use useReducer for complex state transitions
+
+### Context Pattern
+```typescript
+interface ContextType {
+  data: DataType | null;
+  setData: (data: DataType | null) => void;
+}
+
+const Context = createContext<ContextType | null>(null);
+
+export const useContext = () => {
+  const context = useContext(Context);
+  if (!context) {
+    throw new Error('useContext must be used within Provider');
+  }
+  return context;
+};
+```
+
+## Styling Standards
+
+- Use TailwindCSS utility classes exclusively
+- Use class-variance-authority (cva) for component variants
+- Follow mobile-first responsive design
+- Ensure accessibility with proper contrast and semantic HTML
+- Use consistent spacing and typography scales
+
+### Component Variant Pattern
+```typescript
+import { cva } from 'class-variance-authority';
+
+export const buttonVariants = cva(
+  'rounded font-medium transition-colors focus-visible:outline-none',
+  {
+    variants: {
+      variant: {
+        primary: 'bg-blue-500 text-white hover:bg-blue-600',
+        secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300',
+      },
+      size: {
+        sm: 'px-3 py-1 text-sm',
+        md: 'px-4 py-2',
+      },
+    },
+    defaultVariants: {
+      variant: 'primary',
+      size: 'md',
+    },
+  }
+);
+```
+
+## Form Management
+
+- Use React Hook Form for all forms
+- Use Zod for validation schemas
+- Handle form errors consistently
+- Show loading states during submission
+- Use proper TypeScript types for form data
+
+### Form Pattern
+```typescript
+const schema = z.object({
+  name: z.string().min(3, 'Name must be at least 3 characters'),
+  email: z.string().email('Invalid email address'),
+});
+
+type FormData = z.infer<typeof schema>;
+
+export function Form() {
+  const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit = async (data: FormData) => {
+    // Submit logic
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      {/* Form fields with proper labels and error handling */}
+    </form>
+  );
+}
+```
+
+## API and Data Fetching
+
+- Organize API calls by domain in `api/` directory
+- Use React Query for all server state management
+- Handle loading and error states consistently
+- Leverage React Query's caching capabilities
+- Use proper TypeScript types for API responses
+
+### API Module Pattern
+```typescript
+export const getResource = async (id: string): Promise<Resource> => {
+  const { data } = await axios.get<Resource>(`/api/resources/${id}`);
+  return data;
+};
+
+export const useResource = (id: string) => {
+  return useQuery({
+    queryKey: ['resource', id],
+    queryFn: () => getResource(id),
+    enabled: !!id,
+  });
+};
+```
+
+## Routing
+
+- Use React Router v6 with createBrowserRouter
+- Implement route guards for protected routes
+- Type route parameters properly
+- Organize routes logically in separate files
+
+## Testing Requirements
+
+- Write tests for all components using React Testing Library
+- Test custom hooks with renderHook
+- Mock API calls and context providers
+- Aim for good test coverage of critical components
+- Follow the same directory structure as components
+
+## Performance Guidelines
+
+- Use React.memo for expensive components
+- Implement code splitting with React.lazy and Suspense
+- Use virtualization for long lists (react-window)
+- Use useMemo and useCallback appropriately
+- Monitor bundle size and optimize when necessary
+
+## Accessibility Requirements
+
+- Use semantic HTML elements
+- Include proper ARIA attributes when needed
+- Ensure keyboard navigation works
+- Maintain sufficient color contrast
+- Test with screen readers
+- Use proper form labels and descriptions
+
+## File Naming and Organization
+
+- Use PascalCase for component files (e.g., `UserProfile.tsx`)
+- Use camelCase for utility files (e.g., `apiUtils.ts`)
+- Group related files in directories
+- Keep components focused on single responsibility
+- Place shared components in appropriate directories
+
+## Error Handling
+
+- Implement proper error boundaries
+- Handle API errors consistently
+- Show user-friendly error messages
+- Log errors appropriately for debugging
+- Provide fallback UI for error states
+
+## Code Quality Rules
+
+- No unused imports or variables
+- Prefer explicit typing over `any`
+- Use meaningful variable and function names
+- Keep functions small and focused
+- Add comments for complex business logic only
+- Use consistent formatting (prettier/eslint)
+
+Follow these standards religiously to ensure maintainable, accessible, and consistent code across the entire application. 
