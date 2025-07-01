@@ -1,25 +1,14 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core";
-import ace from "brace"; /// NEVER REMOVE THIS, LINE BELOW BRACE SCRIPTS USES THIS INSTANCE
-import "brace/mode/json";
-import "brace/mode/xml";
-import "brace/mode/text";
-import "brace/mode/html";
-import "brace/theme/monokai";
-import "brace/theme/textmate";
-import "brace/ext/language_tools";
-import "brace/ext/searchbox";
+import "ace-builds/src-noconflict/ace";
+import "ace-builds/src-noconflict/mode-json";
+import "ace-builds/src-noconflict/mode-xml";
+import "ace-builds/src-noconflict/mode-text";
+import "ace-builds/src-noconflict/mode-html";
+import "ace-builds/src-noconflict/theme-monokai";
+import "ace-builds/src-noconflict/theme-textmate";
+import "ace-builds/src-noconflict/ext-language_tools";
+import "ace-builds/src-noconflict/ext-searchbox";
 import AceEditor from "react-ace";
-const useStyles = makeStyles(() => ({
-    root: {
-        minHeight: "100%"
-    },
-    jsonTextField: {
-        background: "#fffee6",
-        backgroundColor: "#fffee6",
-        fontFamily: "Monospace"
-    }
-}));
 
 // export class CustomHighlightRules extends window.ace.acequire("ace/mode/text_highlight_rules").TextHighlightRules {
 //   constructor() {
