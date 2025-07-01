@@ -1,8 +1,8 @@
 export const renderNodeUtils = ({ isSelected, src, query: { node, parseFreshNode }, actions }) => {
     return {
         moveUp: () => {
-            if (!isSelected) return;
-            let trg = src.data.parent;
+            if (!isSelected || !src || !src.id) return;
+            let trg = src.data?.parent;
             let childrenArray = trg ? node(trg).descendants(false, "childNodes") : [];
             let index = childrenArray.indexOf(src.id);
 
@@ -21,9 +21,9 @@ export const renderNodeUtils = ({ isSelected, src, query: { node, parseFreshNode
             }
         },
         moveDown: () => {
-            if (!isSelected) return;
+            if (!isSelected || !src || !src.id) return;
 
-            let trg = src.data.parent;
+            let trg = src.data?.parent;
             let childrenArray = trg ? node(trg).descendants(false, "childNodes") : [];
             let index = childrenArray.indexOf(src.id);
             if (index + 1 >= childrenArray.length) {
@@ -42,9 +42,13 @@ export const renderNodeUtils = ({ isSelected, src, query: { node, parseFreshNode
         },
         addNode: ({ newNode, trg, isDown, isCanvas, currentNodeId }) => {
             if (!newNode) return;
+            
+            // Use currentNodeId if provided, otherwise use src.id (with guard check)
+            const nodeId = currentNodeId || (src && src.id);
+            if (!nodeId) return;
 
             let childrenArray = trg ? node(trg).descendants(false, "childNodes") : [];
-            let index = childrenArray.indexOf(currentNodeId || src.id);
+            let index = childrenArray.indexOf(nodeId);
             let tmp = parseFreshNode({
                 data: { type: newNode, isCanvas: Boolean(isCanvas) }
             }).toNode();
@@ -57,7 +61,9 @@ export const renderNodeUtils = ({ isSelected, src, query: { node, parseFreshNode
         },
 
         duplicateNode: () => {
-            let trg = src.data.parent;
+            if (!src || !src.id) return;
+            
+            let trg = src.data?.parent;
             let childrenArray = trg ? node(trg).descendants(false, "childNodes") : [];
             let index = childrenArray.indexOf(src.id);
 

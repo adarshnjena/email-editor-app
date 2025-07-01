@@ -41,7 +41,7 @@ export const ButtonSettings = () => {
             <CustomAccordion
                 title="Text"
                 preview={
-                    <Box px={1} bgcolor="#f1f1f1" borderRadius={5}>
+                    <Box px={1} bgcolor="#f5f5f5" borderRadius={5}>
                         <Typography variant="caption" color="textSecondary">
                             {props.props.text}
                         </Typography>

@@ -22,7 +22,7 @@ export function BodyWrapperSettings() {
 }
 export const BodyWrapperDefaultProps = {
     style: {
-        backgroundColor: "#e0e0e0",
+        backgroundColor: "#f5f5f5",
         backgroundImage: ""
     }
 };

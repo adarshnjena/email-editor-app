@@ -29,18 +29,18 @@ const useStyles = makeStyles(theme => ({
         width: "380px",
         height: "100vh",
         backgroundColor: "#ffffff",
-        borderLeft: "1px solid #e2e8f0",
+        borderLeft: "1px solid #e0e0e0",
         display: "flex",
         flexDirection: "column",
         overflow: "hidden"
     },
     header: {
         padding: theme.spacing(2, 3),
-        borderBottom: "1px solid #e2e8f0",
-        backgroundColor: "#f8fafc"
+        borderBottom: "1px solid #e0e0e0",
+        backgroundColor: "#fafafa"
     },
     tabsContainer: {
-        borderBottom: "1px solid #e2e8f0",
+        borderBottom: "1px solid #e0e0e0",
         backgroundColor: "#ffffff"
     },
     tab: {
@@ -79,7 +79,7 @@ const useStyles = makeStyles(theme => ({
     },
     componentButton: {
         padding: theme.spacing(2),
-        border: "1px solid #e2e8f0",
+        border: "1px solid #e0e0e0",
         borderRadius: "8px",
         backgroundColor: "#ffffff",
         cursor: "pointer",
@@ -89,20 +89,20 @@ const useStyles = makeStyles(theme => ({
         alignItems: "center",
         gap: theme.spacing(1),
         '&:hover': {
-            borderColor: "#3f51b5",
-            backgroundColor: "#f7faff",
+            borderColor: "#424242",
+            backgroundColor: "#fafafa",
             transform: "translateY(-2px)",
             boxShadow: "0 4px 12px rgba(0,0,0,0.1)"
         }
     },
     componentIcon: {
         fontSize: "24px",
-        color: "#4a5568"
+        color: "#424242"
     },
     componentLabel: {
         fontSize: "12px",
         fontWeight: 500,
-        color: "#4a5568",
+        color: "#424242",
         textAlign: "center"
     },
     indicator: {
@@ -232,11 +232,11 @@ export function RightPanel({ ...rest }) {
     return (
         <div className={classes.rightPanel}>
             <div className={classes.header}>
-                <Typography variant="h6" style={{ fontSize: "16px", fontWeight: 600, color: "#1a202c" }}>
+                <Typography variant="h6" style={{ fontSize: "16px", fontWeight: 600, color: "#212121" }}>
                     {selected ? `${selected.name} Settings` : "Email Editor"}
                 </Typography>
                 {selected && (
-                    <Typography variant="body2" style={{ fontSize: "12px", color: "#64748b", marginTop: "4px" }}>
+                    <Typography variant="body2" style={{ fontSize: "12px", color: "#757575", marginTop: "4px" }}>
                         Customize your {selected.name.toLowerCase()} component
                     </Typography>
                 )}

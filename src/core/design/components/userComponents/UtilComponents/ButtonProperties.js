@@ -28,7 +28,7 @@ export function ButtonSizeAccordion({ props, setProp }) {
         <CustomAccordion
             title="Size"
             preview={
-                <Box px={1} bgcolor="#f1f1f1" borderRadius={5}>
+                <Box px={1} bgcolor="#f5f5f5" borderRadius={5}>
                     <Typography variant="caption" color="textSecondary">
                         {props.style.size}
                     </Typography>
@@ -80,7 +80,7 @@ export function ButtonVariantAccordion({ props, setProp }) {
         <CustomAccordion
             title="Type"
             preview={
-                <Box px={1} bgcolor="#f1f1f1" borderRadius={5}>
+                <Box px={1} bgcolor="#f5f5f5" borderRadius={5}>
                     {props.style.variant === "text" ? (
                         <Typography variant="caption" color="textSecondary">
                             {"default"}

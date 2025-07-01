@@ -32,7 +32,7 @@ export const Video = ({ props, style, parentStyle, ...rest }) => {
             {props.src ? (
                 <>
                     {/* <PlayCircleOutlineOutlinedIcon
-                        htmlColor="#fafafa"
+                        htmlColor="#f5f5f5"
                         fontSize="large"
                         style={{ position: "absolute" }}
                     /> */}

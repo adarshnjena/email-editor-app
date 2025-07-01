@@ -60,16 +60,16 @@ function Laptop({ children }) {
                 height="5%"
                 p={1}
             >
-                <span className={classes.dot} style={{ backgroundColor: "#E35353" }}></span>
-                <span className={classes.dot} style={{ backgroundColor: "#FFD725" }}></span>
-                <span className={classes.dot} style={{ backgroundColor: "#37A80B" }}></span>
+                <span className={classes.dot} style={{ backgroundColor: "#757575" }}></span>
+                <span className={classes.dot} style={{ backgroundColor: "#bdbdbd" }}></span>
+                <span className={classes.dot} style={{ backgroundColor: "#9e9e9e" }}></span>
             </Box>
             <Box
                 height="95%"
                 style={{
                     borderBottomLeftRadius: "4px",
                     borderBottomRightRadius: "4px",
-                    backgroundColor: "#fff"
+                    backgroundColor: "#ffffff"
                 }}
             >
                 {children}

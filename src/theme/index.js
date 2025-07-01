@@ -4,48 +4,48 @@ import typography from "./typography";
 import { softShadows, strongShadows } from "./shadows";
 import { THEMES } from "../context/SettingsContext";
 
-// Modern color palette
+// Monochrome color palette - only black, white, and shades of gray
 const modernPalette = {
   primary: {
-    light: '#6573c3',
-    main: '#3f51b5',
-    dark: '#2c387e',
+    light: '#757575',  // Medium gray
+    main: '#424242',   // Dark gray
+    dark: '#212121',   // Very dark gray
     contrastText: '#ffffff'
   },
   secondary: {
-    light: '#33c9dc',
-    main: '#00acc1',
-    dark: '#007c91',
+    light: '#9e9e9e',  // Light gray
+    main: '#757575',   // Medium gray
+    dark: '#424242',   // Dark gray
     contrastText: '#ffffff'
   },
   success: {
-    light: '#4caf50',
-    main: '#2e7d32',
-    dark: '#1b5e20',
+    light: '#666666',  // Gray shades for success
+    main: '#424242',
+    dark: '#212121',
     contrastText: '#ffffff'
   },
   info: {
-    light: '#64b5f6',
-    main: '#2196f3',
-    dark: '#0d47a1',
+    light: '#9e9e9e',  // Gray shades for info
+    main: '#757575',
+    dark: '#424242',
     contrastText: '#ffffff'
   },
   warning: {
-    light: '#ffb74d',
-    main: '#ff9800',
-    dark: '#f57c00',
-    contrastText: 'rgba(0, 0, 0, 0.87)'
+    light: '#bdbdbd',  // Light gray shades for warning
+    main: '#9e9e9e',
+    dark: '#757575',
+    contrastText: '#000000'
   },
   error: {
-    light: '#e57373',
-    main: '#f44336',
-    dark: '#d32f2f',
+    light: '#757575',  // Gray shades for error
+    main: '#424242',
+    dark: '#212121',
     contrastText: '#ffffff'
   },
   text: {
-    primary: '#2d3748',
-    secondary: '#718096',
-    disabled: '#a0aec0'
+    primary: '#212121',    // Very dark gray for primary text
+    secondary: '#757575',  // Medium gray for secondary text
+    disabled: '#bdbdbd'    // Light gray for disabled text
   }
 };
 
@@ -178,8 +178,8 @@ const themeConfigs = [
                 disabledBackground: 'rgba(0, 0, 0, 0.12)'
             },
             background: {
-                default: '#f7f9fc',
-                dark: "#edf2f7",
+                default: '#fafafa',  // Very light gray
+                dark: "#eeeeee",     // Light gray
                 paper: colors.common.white
             },
             primary: modernPalette.primary,
@@ -206,50 +206,50 @@ const themeConfigs = [
                 focus: "rgba(255, 255, 255, 0.12)"
             },
             background: {
-                default: "#1a202c",
-                dark: "#171923",
-                paper: "#2d3748"
+                default: "#212121",  // Very dark gray
+                dark: "#171717",     // Almost black
+                paper: "#424242"     // Dark gray
             },
             primary: {
-                main: "#90cdf4",
-                light: "#bee3f8",
-                dark: "#63b3ed",
-                contrastText: "#1a202c"
+                main: "#e0e0e0",     // Light gray
+                light: "#f5f5f5",    // Very light gray
+                dark: "#bdbdbd",     // Medium light gray
+                contrastText: "#212121"
             },
             secondary: {
-                main: "#9f7aea",
-                light: "#b794f4",
-                dark: "#805ad5",
-                contrastText: "#1a202c"
+                main: "#bdbdbd",     // Medium light gray
+                light: "#e0e0e0",    // Light gray
+                dark: "#9e9e9e",     // Medium gray
+                contrastText: "#212121"
             },
             success: {
-                light: "#68d391",
-                main: "#48bb78",
-                dark: "#38a169",
-                contrastText: "#1a202c"
+                light: "#9e9e9e",    // Gray shades
+                main: "#757575",
+                dark: "#616161",
+                contrastText: "#212121"
             },
             info: {
-                light: "#63b3ed",
-                main: "#4299e1",
-                dark: "#3182ce",
-                contrastText: "#1a202c"
+                light: "#bdbdbd",    // Gray shades
+                main: "#9e9e9e",
+                dark: "#757575",
+                contrastText: "#212121"
             },
             warning: {
-                light: "#fbd38d",
-                main: "#ed8936",
-                dark: "#dd6b20",
-                contrastText: "#1a202c"
+                light: "#e0e0e0",    // Light gray shades
+                main: "#bdbdbd",
+                dark: "#9e9e9e",
+                contrastText: "#212121"
             },
             error: {
-                light: "#feb2b2",
-                main: "#fc8181",
-                dark: "#f56565",
-                contrastText: "#1a202c"
+                light: "#9e9e9e",    // Gray shades
+                main: "#757575",
+                dark: "#616161",
+                contrastText: "#212121"
             },
             text: {
-                primary: "#f7fafc",
-                secondary: "#e2e8f0",
-                disabled: "#a0aec0"
+                primary: "#f5f5f5",   // Very light gray
+                secondary: "#e0e0e0", // Light gray
+                disabled: "#9e9e9e"   // Medium gray
             },
             divider: "rgba(255, 255, 255, 0.12)"
         },
@@ -268,50 +268,50 @@ const themeConfigs = [
                 focus: "rgba(255, 255, 255, 0.12)"
             },
             background: {
-                default: "#0f172a",
-                dark: "#0b1222",
-                paper: "#1e293b"
+                default: "#000000",  // Pure black
+                dark: "#0a0a0a",     // Almost black
+                paper: "#1a1a1a"     // Very dark gray
             },
             primary: {
-                main: "#38bdf8",
-                light: "#7dd3fc",
-                dark: "#0c89cb",
-                contrastText: "#0f172a"
+                main: "#ffffff",     // Pure white
+                light: "#f5f5f5",    // Very light gray
+                dark: "#e0e0e0",     // Light gray
+                contrastText: "#000000"
             },
             secondary: {
-                main: "#f472b6",
-                light: "#f9a8d4",
-                dark: "#db2777",
-                contrastText: "#0f172a"
+                main: "#e0e0e0",     // Light gray
+                light: "#f5f5f5",    // Very light gray
+                dark: "#bdbdbd",     // Medium light gray
+                contrastText: "#000000"
             },
             success: {
-                light: "#86efac",
-                main: "#34d399",
-                dark: "#10b981",
-                contrastText: "#0f172a"
+                light: "#bdbdbd",    // Gray shades
+                main: "#9e9e9e",
+                dark: "#757575",
+                contrastText: "#000000"
             },
             info: {
-                light: "#bae6fd",
-                main: "#38bdf8",
-                dark: "#0ea5e9",
-                contrastText: "#0f172a"
+                light: "#e0e0e0",    // Gray shades
+                main: "#bdbdbd",
+                dark: "#9e9e9e",
+                contrastText: "#000000"
             },
             warning: {
-                light: "#fdba74",
-                main: "#fb923c",
-                dark: "#f97316",
-                contrastText: "#0f172a"
+                light: "#f5f5f5",    // Light gray shades
+                main: "#e0e0e0",
+                dark: "#bdbdbd",
+                contrastText: "#000000"
             },
             error: {
-                light: "#fda4af",
-                main: "#fb7185",
-                dark: "#e11d48",
-                contrastText: "#0f172a"
+                light: "#bdbdbd",    // Gray shades
+                main: "#9e9e9e",
+                dark: "#757575",
+                contrastText: "#000000"
             },
             text: {
-                primary: "#f8fafc",
-                secondary: "#e2e8f0",
-                disabled: "#94a3b8"
+                primary: "#ffffff",   // Pure white
+                secondary: "#e0e0e0", // Light gray
+                disabled: "#757575"   // Medium gray
             },
             divider: "rgba(255, 255, 255, 0.12)"
         },

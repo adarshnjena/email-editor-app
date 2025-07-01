@@ -35,7 +35,7 @@ import { CircularProgress } from "@material-ui/core";
 const useStyles = makeStyles(theme => ({
     appBar: {
         position: "fixed",
-        backgroundColor: "#fff"
+                        backgroundColor: "#ffffff"
     },
     title: {
         marginLeft: theme.spacing(2),

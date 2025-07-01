@@ -18,7 +18,7 @@ import FilterNoneIcon from "@material-ui/icons/FilterNone";
 const useStyles = makeStyles(theme => ({
     componentSelected: {
         position: "relative",
-        border: "thin dashed blue"
+        border: "thin dashed #9e9e9e"
     },
     indicatorIcons: {
         marginRight: theme.spacing(1)

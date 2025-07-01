@@ -43,7 +43,7 @@ export const DividerSettings = () => {
             <CustomAccordion
                 title="Thickness"
                 preview={
-                    <Box px={1} bgcolor="#f1f1f1" borderRadius={5}>
+                    <Box px={1} bgcolor="#f5f5f5" borderRadius={5}>
                         <Typography variant="caption" color="textSecondary">
                             {height}
                         </Typography>
@@ -81,7 +81,7 @@ export const DividerDefaultProps = {
     style: {
         width: "100%",
         height: 2,
-        backgroundColor: "#808080"
+        backgroundColor: "#9e9e9e"
     },
     parentStyle: {
         align: "left",

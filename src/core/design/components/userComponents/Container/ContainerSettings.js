@@ -36,7 +36,7 @@ function Columns({ type, handleColumns, props }) {
     let w = 100 / type;
     const [cnfOpen, setCnfOpen] = React.useState(false);
     var normalColumnStyle = {
-        border: "thin solid #b4bec3",
+        border: "thin solid #bdbdbd",
         padding: 0,
         height: "4vh",
         background: "#fafafa",
@@ -81,7 +81,7 @@ function Columns({ type, handleColumns, props }) {
                             <Box
                                 key={i}
                                 style={{
-                                    borderRight: i < type - 1 ? "thin solid #b4bec3" : "none",
+                                    borderRight: i < type - 1 ? "thin solid #bdbdbd" : "none",
                                     width: `${w}` + "%",
                                     height: "4vh"
                                 }}
@@ -190,7 +190,7 @@ export const ContainerSettings = () => {
             <CustomAccordion
                 title="Columns"
                 preview={
-                    <Box px={1} bgcolor="#f1f1f1" borderRadius={5}>
+                    <Box px={1} bgcolor="#f5f5f5" borderRadius={5}>
                         <Typography variant="caption" color="textSecondary">
                             {props.props.containerType +
                                 (props.props.containerType === 1 ? " column" : " columns")}
@@ -256,7 +256,7 @@ export const ContainerDefaultProps = {
     },
     style: {
         backgroundImage: "",
-        backgroundColor: "#FFFFFF00",
+        backgroundColor: "#f5f5f5",
         width: "100%",
         height: "100%",
 

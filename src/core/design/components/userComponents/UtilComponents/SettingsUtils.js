@@ -32,7 +32,7 @@ export function PaddingAccordion({ props, setProp, styleProp }) {
         <CustomAccordion
             title="Padding"
             preview={
-                <Box px={1} bgcolor="#f1f1f1" borderRadius={5}>
+                <Box px={1} bgcolor="#f5f5f5" borderRadius={5}>
                     <Typography variant="caption" color="textSecondary">
                         {props[styleProp].paddingTop},&nbsp;
                         {props[styleProp].paddingRight},&nbsp;
@@ -53,7 +53,7 @@ export function MarginAccordion({ props, setProp, styleProp }) {
         <CustomAccordion
             title="Margin"
             preview={
-                <Box px={1} bgcolor="#f1f1f1" borderRadius={5}>
+                <Box px={1} bgcolor="#f5f5f5" borderRadius={5}>
                     <Typography variant="caption" color="textSecondary">
                         {props[styleProp].marginTop},&nbsp;
                         {props[styleProp].marginRight},&nbsp;
@@ -95,7 +95,7 @@ export function BorderAccordion({ props, setProp, styleProp }) {
                         }}
                     />
                 ) : (
-                    <Box px={1} bgcolor="#f1f1f1" borderRadius={5}>
+                    <Box px={1} bgcolor="#f5f5f5" borderRadius={5}>
                         <Typography variant="caption" color="textSecondary">
                             none
                         </Typography>
@@ -146,7 +146,7 @@ export function SizeAccordion({ props, setProp, type }) {
         <CustomAccordion
             title={type}
             preview={
-                <Box px={1} bgcolor="#f1f1f1" borderRadius={5}>
+                <Box px={1} bgcolor="#f5f5f5" borderRadius={5}>
                     <Typography variant="caption" color="textSecondary">
                         {type === "Width" ? props.style.width : props.style.height}
                     </Typography>
@@ -403,7 +403,7 @@ export function AlignmentAccordion({ props, setProp }) {
         <CustomAccordion
             title="Alignment"
             preview={
-                <Box px={1} bgcolor="#f1f1f1" borderRadius={5}>
+                <Box px={1} bgcolor="#f5f5f5" borderRadius={5}>
                     <Typography variant="caption" color="textSecondary">
                         {props.parentStyle["align"]}
                     </Typography>

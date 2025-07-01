@@ -50,7 +50,7 @@ export default function Design({ editorState, onHtmlOpen }) {
                 backgroundImage: "url(" + bodyBackgroundImage + ")",
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
-                backgroundColor: bodyBackgroundColor,
+                backgroundColor: "#f5f5f5",
                 width: "100%",
                 height: "100%",
                 overflowX: "hidden",

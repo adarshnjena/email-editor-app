@@ -27,27 +27,27 @@ const useStyles = makeStyles(theme => ({
         }
     },
     primaryButton: {
-        background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        background: "linear-gradient(135deg, #757575 0%, #424242 100%)",
         color: "#ffffff",
         '&:hover': {
-            background: "linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%)"
+            background: "linear-gradient(135deg, #616161 0%, #212121 100%)"
         }
     },
     secondaryButton: {
         backgroundColor: "#ffffff",
-        color: "#4a5568",
-        border: "2px solid #e2e8f0",
+        color: "#424242",
+        border: "2px solid #e0e0e0",
         '&:hover': {
-            backgroundColor: "#f8fafc",
-            borderColor: "#cbd5e0"
+            backgroundColor: "#fafafa",
+            borderColor: "#bdbdbd"
         }
     },
     outlinedButton: {
         backgroundColor: "transparent",
-        color: "#3f51b5",
-        border: "2px solid #3f51b5",
+        color: "#424242",
+        border: "2px solid #424242",
         '&:hover': {
-            backgroundColor: "#3f51b5",
+            backgroundColor: "#424242",
             color: "#ffffff"
         }
     }

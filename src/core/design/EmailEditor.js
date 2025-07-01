@@ -27,7 +27,7 @@ import "../../assets/css/modern-ui.css";
 import "braft-editor/dist/index.css";
 import { createTheme } from "../../theme";
 import useSettings from "../../hooks/useSettings";
-import { encodeJson } from "./utils/encryptJson";
+import { encodeJson, decodeJson } from "./utils/encryptJson";
 import { renderHtml } from "../repo/exportHtmlRepo";
 import packageJson from "../../../package.json";
 
@@ -52,7 +52,7 @@ const useStyles = makeStyles(() => ({
     rightPanelSection: {
         width: "380px",
         height: "100%",
-        borderLeft: "1px solid #e2e8f0",
+        borderLeft: "1px solid #e0e0e0",
         backgroundColor: "#ffffff"
     }
 }));
@@ -70,6 +70,60 @@ export function EmailEditor({
 }) {
     const classes = useStyles();
     const { settings } = useSettings();
+    const [currentHtmlContent, setCurrentHtmlContent] = React.useState(null);
+    const [currentEditorState, setCurrentEditorState] = React.useState(null);
+
+    const handleStateUpdate = ({ editorState, htmlContent }) => {
+        setCurrentEditorState(editorState);
+        setCurrentHtmlContent(htmlContent);
+    };
+
+    const handleImportSuccess = (importedData) => {
+        try {
+            let jsonToImport = null;
+            let versionToImport = state_version;
+            
+            // Handle different import formats based on structure
+            if (typeof importedData === 'string') {
+                // Encoded state - decode it first
+                const decoded = decodeJson(importedData);
+                const parsed = JSON.parse(decoded);
+                jsonToImport = parsed.json;
+                versionToImport = parsed.version || state_version;
+            } else if (importedData.json && importedData.version) {
+                // Our export format (json + version)
+                if (typeof importedData.json === 'object') {
+                    jsonToImport = JSON.stringify(importedData.json);
+                } else {
+                    jsonToImport = importedData.json;
+                }
+                versionToImport = importedData.version;
+            } else if (importedData.json && typeof importedData.json === 'object') {
+                // CraftJS state structure
+                jsonToImport = JSON.stringify(importedData.json);
+            } else if (importedData.ROOT) {
+                // Raw CraftJS nodes
+                jsonToImport = JSON.stringify(importedData);
+            } else {
+                // Fallback
+                jsonToImport = JSON.stringify(importedData);
+            }
+            
+            // Create the encoded state for the app to load
+            const stateToLoad = encodeJson(JSON.stringify({ 
+                json: jsonToImport, 
+                version: versionToImport 
+            }));
+            
+            // Set the global state and reload
+            window.__editorState = stateToLoad;
+            window.__version = versionToImport;
+            window.location.reload();
+        } catch (error) {
+            console.error('Error handling import:', error);
+            alert('Error importing template: ' + error.message);
+        }
+    };
 
     return (
         <ThemeProvider theme={createTheme(settings)}>
@@ -97,11 +151,18 @@ export function EmailEditor({
                                 <RightPanel />
                             </div>
                         </div>
-                        <Footer onPreviewOpen={onPreviewOpen} onHtmlOpen={onHtmlOpen} />
+                        <Footer 
+                            onPreviewOpen={onPreviewOpen} 
+                            onHtmlOpen={onHtmlOpen}
+                            editorState={currentEditorState}
+                            htmlContent={currentHtmlContent}
+                            onImportSuccess={handleImportSuccess}
+                        />
                         <EditorSaveModule
                             triggerFetchState={triggerFetchState}
                             getState={getState}
                             version={loadVersion ? loadVersion : state_version}
+                            onStateUpdate={handleStateUpdate}
                         />
                     </Editor>
                 </div>
@@ -110,7 +171,7 @@ export function EmailEditor({
     );
 }
 
-function EditorSaveModule({ triggerFetchState, getState, version }) {
+function EditorSaveModule({ triggerFetchState, getState, version, onStateUpdate }) {
     const { query } = useEditor();
 
     const fetchState = async () => {
@@ -125,10 +186,20 @@ function EditorSaveModule({ triggerFetchState, getState, version }) {
             console.log(err);
         }
 
-        getState({
+        const result = {
             html: html,
             state: state
-        });
+        };
+
+        getState(result);
+        
+        // Update parent component with current state and HTML
+        if (onStateUpdate) {
+            onStateUpdate({
+                editorState: { json: json, version: version }, // Keep json as string
+                htmlContent: html
+            });
+        }
     };
 
     if (triggerFetchState) {
