@@ -14,7 +14,7 @@ import {
 } from "./components/userComponents";
 import { RenderNode } from "./utils/RenderNode";
 import { Box, Grid, makeStyles } from "@material-ui/core";
-import Design from "./components/layoutComponents/Design";
+import { Design } from "./components/layoutComponents/Design";
 import { jssPreset, StylesProvider, ThemeProvider } from "@material-ui/core";
 import { create } from "jss";
 import rtl from "jss-rtl";
@@ -26,7 +26,7 @@ import "../../assets/css/devices.min.css";
 import "../../assets/css/modern-ui.css";
 import "braft-editor/dist/index.css";
 import { createTheme } from "../../theme";
-import useSettings from "../../hooks/useSettings";
+import { useSettings } from "../../hooks/useSettings";
 import { encodeJson, decodeJson } from "./utils/encryptJson";
 import { renderHtml } from "../repo/exportHtmlRepo";
 import packageJson from "../../../package.json";
@@ -59,6 +59,15 @@ const useStyles = makeStyles(() => ({
 
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 
+interface EmailEditorProps {
+    loadState?: any;
+    loadVersion?: string;
+    triggerFetchState?: boolean;
+    getState?: (result: any) => void;
+    onPreviewOpen?: () => void;
+    onHtmlOpen?: () => void;
+}
+
 export function EmailEditor({
     loadState,
     loadVersion,
@@ -67,7 +76,7 @@ export function EmailEditor({
     onPreviewOpen,
     onHtmlOpen,
     ...rest
-}) {
+}: EmailEditorProps) {
     const classes = useStyles();
     const { settings } = useSettings();
     const [currentHtmlContent, setCurrentHtmlContent] = React.useState(null);
@@ -172,7 +181,14 @@ export function EmailEditor({
     );
 }
 
-function EditorSaveModule({ triggerFetchState, getState, version, onStateUpdate }) {
+interface EditorSaveModuleProps {
+    triggerFetchState?: boolean;
+    getState?: (result: any) => void;
+    version?: string;
+    onStateUpdate?: (data: { editorState: any; htmlContent: any }) => void;
+}
+
+function EditorSaveModule({ triggerFetchState, getState, version, onStateUpdate }: EditorSaveModuleProps) {
     const { query } = useEditor();
 
     const fetchState = async () => {
@@ -210,4 +226,4 @@ function EditorSaveModule({ triggerFetchState, getState, version, onStateUpdate 
     return null;
 }
 
-export default EmailEditor;
+// EmailEditor is already exported above with named export

@@ -2,7 +2,7 @@ import React from "react";
 import { Dialog, DialogContent, DialogTitle, IconButton, Typography } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import { Box } from "@material-ui/core";
-import Editor from "../../components/AceEditor";
+import { Editor } from "../../components/AceEditor";
 import { CircularProgress } from "@material-ui/core";
 
 const decoder = require("he");
@@ -19,7 +19,7 @@ interface ViewHtmlDialogProps {
     onClose: () => void;
 }
 
-function ViewHtmlDialog({ html, onClose }: ViewHtmlDialogProps): JSX.Element {
+export function ViewHtmlDialog({ html, onClose }: ViewHtmlDialogProps): JSX.Element {
     return (
         <Dialog
             open={true}
@@ -64,4 +64,4 @@ function ViewHtmlDialog({ html, onClose }: ViewHtmlDialogProps): JSX.Element {
     );
 }
 
-export default ViewHtmlDialog;
+// ViewHtmlDialog is already exported above with named export

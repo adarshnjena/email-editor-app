@@ -24,7 +24,25 @@ import AceEditor from "react-ace";
 //   }
 // }
 
-function Editor({
+interface EditorProps {
+    className?: string;
+    value?: string;
+    mode?: string;
+    isView?: boolean;
+    height?: string | number;
+    width?: string | number;
+    isDark?: boolean;
+    defaultValue?: string;
+    cursorStart?: number;
+    onChange?: (value: string, event: any) => void;
+    onPaste?: (content: string) => void;
+    disableSyntaxCheck?: boolean;
+    onBlur?: (event: any) => void;
+    name?: string;
+    onLoad?: (editor: any) => void;
+}
+
+export function Editor({
     className,
     value,
     mode,
@@ -40,8 +58,8 @@ function Editor({
     onBlur,
     name,
     onLoad
-}) {
-    const handleChange = value1 => {
+}: EditorProps) {
+    const handleChange = (value1: string) => {
         if (onChange) {
             let ev = {
                 target: {
@@ -53,18 +71,18 @@ function Editor({
         }
     };
 
-    const handleBlur = event => {
+    const handleBlur = (event: any) => {
         if (onBlur) {
             event.target.name = name;
             onBlur(event);
         }
     };
 
-    const handlePaste = content => {
+    const handlePaste = (content: string) => {
         if (onPaste) onPaste(content);
     };
 
-    var theme = isDark ? "monokai" : "textmate";
+    const theme = isDark ? "monokai" : "textmate";
 
     return (
         <AceEditor
@@ -75,10 +93,10 @@ function Editor({
             defaultValue={defaultValue}
             theme={theme}
             mode={mode}
-            width={width ? width : "100%"}
+            width={width ? String(width) : "100%"}
             readOnly={isView}
             wrapEnabled={true}
-            height={height}
+            height={height ? String(height) : undefined}
             onLoad={onLoad}
             enableLiveAutocompletion={true}
             enableBasicAutocompletion={true}
@@ -100,5 +118,3 @@ function Editor({
         />
     );
 }
-
-export default Editor;

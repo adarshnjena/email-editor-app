@@ -80,7 +80,13 @@ function Border({ propKey, propName, setProp, props, styleProp }) {
     );
 }
 
-export function BorderComponent({ props, setProp, styleProp }) {
+interface BorderComponentProps {
+    props: any;
+    setProp: (callback: (props: any) => void) => void;
+    styleProp?: string;
+}
+
+export function BorderComponent({ props, setProp, styleProp }: BorderComponentProps) {
     const classes = useStyles();
     const handleOptionChange = () => {
         let value = props[styleProp].borderTop;

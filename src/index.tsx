@@ -1,13 +1,14 @@
 import React, { useCallback, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { EmailEditor as Designer } from "./core/design/EmailEditor";
-import reportWebVitals from "./reportWebVitals";
-import { SettingsProvider } from "./context/SettingsContext";
+import { reportWebVitals } from "./reportWebVitals";
+import { AppProvider } from "./providers";
+import { useAppContext } from "./context/AppContext";
 import { restoreSettings } from "./utils/settings";
-import useIsMountedRef from "./hooks/useIsMountedRef";
+import { useIsMountedRef } from "./hooks/useIsMountedRef";
 import { decodeJson } from "./core/design/utils/encryptJson";
-import ViewPreviewDialog from "./core/design/preview/ViewPreviewDialog";
-import ViewHtmlDialog from "./core/design/preview/ViewHtmlDialog";
+import { ViewPreviewDialog } from "./core/design/preview/ViewPreviewDialog";
+import { ViewHtmlDialog } from "./core/design/preview/ViewHtmlDialog";
 
 // Define state_version constant (matches package.json)
 const state_version = "1.0.0";
@@ -33,9 +34,9 @@ interface MessageEvent {
     };
 }
 
-function EmailEditor(): JSX.Element {
+function EmailEditorApp(): JSX.Element {
     const isMountedRef = useIsMountedRef();
-    const [state, setState] = React.useState<EditorState | null>(null);
+    const { editorState, setEditorState, version, setVersion } = useAppContext();
     const [triggerFetchState, setTriggerFetchState] = React.useState<boolean>(false);
     const [previewState, setPreviewState] = React.useState<string | null>(null);
     const [htmlState, sethtmlState] = React.useState<string | null>(null);
@@ -59,8 +60,9 @@ function EmailEditor(): JSX.Element {
             console.log(error);
             return null;
         }
-        setState({ json: stateJson, version: stateVersion });
-    }, []);
+        setEditorState({ json: stateJson, version: stateVersion });
+        setVersion(stateVersion);
+    }, [setEditorState, setVersion]);
 
     const getState = (obj: StateData) => {
         postMessage("savedState", obj);
@@ -100,13 +102,13 @@ function EmailEditor(): JSX.Element {
         // Initialize with default state if accessed directly (not in iframe)
         if (window.location === window.parent.location) {
             // Not in iframe, initialize with default empty state
-            const defaultState: EditorState = {
+            setEditorState({
                 json: null,  // Will create empty editor
                 version: state_version
-            };
-            setState(defaultState);
+            });
+            setVersion(state_version);
         }
-    }, [isMountedRef, receiveMessage]);
+    }, [isMountedRef, receiveMessage, setEditorState, setVersion]);
 
     function postMessage(type: string, value: any) {
         window.parent.postMessage({ message: type, value: value }, PARENT_URL);
@@ -123,11 +125,11 @@ function EmailEditor(): JSX.Element {
         setMode("html");
         setTriggerFetchState(true);
     };
-    return state && Object.keys(state).length > 0 ? (
+    return editorState ? (
         <>
             <Designer
-                loadState={state["json"]}
-                loadVersion={state["version"]}
+                loadState={editorState.json}
+                loadVersion={editorState.version || version}
                 triggerFetchState={triggerFetchState}
                 getState={getState}
                 onPreviewOpen={onPreviewOpen}
@@ -139,18 +141,19 @@ function EmailEditor(): JSX.Element {
             {mode === "html" && <ViewHtmlDialog html={htmlState} onClose={onClose} />}
         </>
     ) : (
-        <div>Error</div>
+        <div>Loading...</div>
     );
 }
 
-const settings = restoreSettings();
+function EmailEditor(): JSX.Element {
+    return (
+        <AppProvider settings={restoreSettings()}>
+            <EmailEditorApp />
+        </AppProvider>
+    );
+}
 
-ReactDOM.render(
-    <SettingsProvider settings={settings}>
-        <EmailEditor />
-    </SettingsProvider>,
-    document.getElementById("root")
-);
+ReactDOM.render(<EmailEditor />, document.getElementById("root"));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

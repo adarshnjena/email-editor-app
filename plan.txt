@@ -1,0 +1,62 @@
+Refactoring the whole code-base so every file, folder, component, hook, style, context, API call and test matches the LeadSend rules is a multi-day task that involves hundreds of edits and a full test/release cycle.  Doing it in a single chat session would almost certainly introduce breaking changes.
+
+Here’s the safest way forward:
+
+1. Create a “standards” branch so your main line stays stable.  
+2. Work in small, reviewable phases (listed below).  
+3. After each phase: lint, type-check, run the app, commit, and open a pull-request for code-review.  
+4. Merge only when CI is green.
+
+PHASE-BY-PHASE PLAN
+──────────────────
+Phase 0 – Tooling foundation  
+ • Add ESLint configs for import-ordering & no-default-export rules.  
+ • Add Prettier & Husky pre-commit hook.  
+ • Enable TS strict options (`noImplicitAny`, etc.).  
+ • Add a Tailwind config (it can coexist with MUI until you finish the migration).
+
+Phase 1 – Exports & file naming  
+ • Iteratively replace `export default` with named exports; rename files so they match exactly (e.g. `EmailEditor.tsx` → `EmailEditor.tsx` but with `export function EmailEditor`).  
+ • Fix every import that referenced the default.  
+ • CI: compile & run unit tests.
+
+Phase 2 – Context & state  
+ • Convert `AppContext` and `SettingsContext` to named exports; wrap in an error-boundary provider.  
+ • Add the guard hook (`useAppContext`) pattern.
+
+Phase 3 – API layer  
+ • Move raw Axios calls into `src/api/<domain>.ts`.  
+ • Introduce React Query hooks (`useExportHtml`, `useExportImport`) that call those functions.  
+ • Refactor components to use the hooks, not Axios directly.
+
+Phase 4 – Styling  
+ • Pick one visual component (e.g. `Button`) and migrate to Tailwind + `cva` variant helper.  
+ • Update its usages.  
+ • Repeat gradually for remaining UI elements.
+
+Phase 5 – Forms & validation  
+ • Replace imperative form code with React Hook Form + Zod in one dialog, prove it works.  
+ • Roll out to the rest of the dialogs.
+
+Phase 6 – Performance  
+ • Add `React.memo` where prop-equality is stable.  
+ • Code-split dialogs with `React.lazy`.  
+ • Virtualise any long lists inside the editor.
+
+Phase 7 – Testing  
+ • Introduce React Testing Library & Jest configuration.  
+ • Write tests for one refactored component & one hook, then expand.
+
+Phase 8 – Accessibility & polishing  
+ • Run axe-core audits, fix contrast & ARIA issues.  
+ • Final pass on import order, naming, comments, unused code.  
+
+HOW TO PROCEED IN THIS CHAT
+───────────────────────────
+If you’d like, we can start Phase 1 right now:
+
+1. Choose a single file that has a default export.  
+2. I’ll convert it to a named export, adjust its imports, and push the diff.  
+3. You run the app to confirm nothing broke, then we move to the next file.
+
+Let me know which file you want to start with, or if you prefer a different phase first.

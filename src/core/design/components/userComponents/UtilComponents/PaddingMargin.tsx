@@ -10,7 +10,13 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export function PaddingComponent({ props, setProp, styleProp }) {
+interface SpacingComponentProps {
+    props: any;
+    setProp: (callback: (props: any) => void) => void;
+    styleProp?: string;
+}
+
+export function PaddingComponent({ props, setProp, styleProp }: SpacingComponentProps) {
     return (
         <SpacingChange props={props} setProp={setProp} propType={"Padding"} styleProp={styleProp} />
     );
@@ -18,7 +24,7 @@ export function PaddingComponent({ props, setProp, styleProp }) {
 PaddingComponent.defaultProps = {
     styleProp: "parentStyle"
 };
-export function MarginComponent({ props, setProp, styleProp }) {
+export function MarginComponent({ props, setProp, styleProp }: SpacingComponentProps) {
     return (
         <SpacingChange props={props} setProp={setProp} propType={"Margin"} styleProp={styleProp} />
     );
@@ -27,7 +33,16 @@ MarginComponent.defaultProps = {
     styleProp: "parentStyle"
 };
 
-function SingleSpacingChange({ propKey, propName, setProp, props, propType, styleProp }) {
+interface SingleSpacingChangeProps {
+    propKey: string;
+    propName: string;
+    setProp: (callback: (props: any) => void) => void;
+    props: any;
+    propType: string;
+    styleProp: string;
+}
+
+function SingleSpacingChange({ propKey, propName, setProp, props, propType, styleProp }: SingleSpacingChangeProps) {
     const classes = useStyles();
 
     function getSpacing() {
@@ -66,7 +81,14 @@ function SingleSpacingChange({ propKey, propName, setProp, props, propType, styl
         </Box>
     );
 }
-function SpacingChange({ props, setProp, propType, styleProp }) {
+interface SpacingChangeProps {
+    props: any;
+    setProp: (callback: (props: any) => void) => void;
+    propType: string;
+    styleProp: string;
+}
+
+function SpacingChange({ props, setProp, propType, styleProp }: SpacingChangeProps) {
     function getSpacing() {
         return props[styleProp];
     }

@@ -110,7 +110,14 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function TabPanel({ children, value, index, ...other }) {
+interface TabPanelProps {
+    children?: React.ReactNode;
+    value: number;
+    index: number;
+    [key: string]: any;
+}
+
+function TabPanel({ children, value, index, ...other }: TabPanelProps) {
     return (
         <div
             role="tabpanel"
@@ -124,7 +131,11 @@ function TabPanel({ children, value, index, ...other }) {
     );
 }
 
-function ContentTab({ onAddComponent }) {
+interface ContentTabProps {
+    onAddComponent?: (data: any) => void;
+}
+
+function ContentTab({ onAddComponent }: ContentTabProps) {
     const classes = useStyles();
     const { connectors } = useEditor();
 
@@ -137,7 +148,16 @@ function ContentTab({ onAddComponent }) {
         return React.createElement(comp.component);
     }, []);
 
-    const PaletteItem = ({ comp }) => {
+    interface PaletteItemProps {
+        comp: {
+            name: string;
+            icon: any;
+            component: any;
+            isCanvas?: boolean;
+        };
+    }
+
+    const PaletteItem = ({ comp }: PaletteItemProps) => {
         const element = React.useMemo(() => buildElement(comp), [buildElement, comp]);
         
         const IconComponent = comp.icon;
@@ -181,7 +201,11 @@ function ContentTab({ onAddComponent }) {
     );
 }
 
-export function RightPanel({ ...rest }) {
+interface RightPanelProps {
+    [key: string]: any;
+}
+
+export function RightPanel({ ...rest }: RightPanelProps) {
     const classes = useStyles();
     const [tabValue, setTabValue] = useState(0);
     const { actions, query, selected, rootNode } = useEditor((state, query) => {

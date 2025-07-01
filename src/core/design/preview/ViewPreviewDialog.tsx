@@ -22,14 +22,14 @@ import PhoneAndroidIcon from "@material-ui/icons/PhoneAndroid";
 import Grid from "@material-ui/core/Grid";
 import { ToggleButton, ToggleButtonGroup } from "@material-ui/lab";
 import WebAssetIcon from "@material-ui/icons/WebAsset";
-import Editor from "../../components/AceEditor";
+import { Editor } from "../../components/AceEditor";
 import Handlebars from "handlebars";
 import { HtmlPreview } from "./HtmlPreview";
 import OfflineBoltIcon from "@material-ui/icons/OfflineBolt";
 import { Divider } from "@material-ui/core";
 import MuiAlert from "@material-ui/lab/Alert";
 import { Snackbar } from "@material-ui/core";
-import convertHandlebarStringToObject from "../utils/handleBarStringIntoObjects";
+import { convertHandlebarStringToObject } from "../utils/handleBarStringIntoObjects";
 import { CircularProgress } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
@@ -112,7 +112,7 @@ interface SnackbarState {
     props: Record<string, any>;
 }
 
-function ViewPreviewDialog({ previewDoc, onClose, title }: ViewPreviewDialogProps): JSX.Element {
+export function ViewPreviewDialog({ previewDoc, onClose, title }: ViewPreviewDialogProps): JSX.Element {
     const classes = useStyles();
     const [formats, setFormats] = React.useState<string>("laptop");
     const theme = useTheme();
@@ -340,4 +340,4 @@ function ViewPreviewDialog({ previewDoc, onClose, title }: ViewPreviewDialogProp
     );
 }
 
-export default ViewPreviewDialog;
+// ViewPreviewDialog is already exported above with named export

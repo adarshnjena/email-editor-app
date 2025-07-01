@@ -1,28 +1,33 @@
-import axios from "./axios";
-class ExportHtmlService {
-    generateHtml = jsx =>
-        new Promise((resolve, reject) => {
-            //check if url is present in env.
-            let url = null;
-            if (process.env.REACT_APP_SSR_EXPORT_HTML_URL) {
-                url = process.env.REACT_APP_SSR_EXPORT_HTML_URL;
-                axios
-                    .post(url, { app: jsx }, { headers: { "Content-Type": "application/json" } })
-                    .then(response => {
-                        if (response) {
-                            resolve(response.data);
-                        } else {
-                            reject(response);
-                        }
-                    })
-                    .catch(error => {
-                        console.log(error);
-                        reject(error);
-                    });
-            }
-        });
+import { axiosInstance } from "./axios";
+
+interface GenerateHtmlResponse {
+    data: any;
 }
 
-const exportHtmlService = new ExportHtmlService();
+export const generateHtml = (jsx: any): Promise<any> => {
+    return new Promise((resolve, reject) => {
+        // Check if url is present in env
+        const url = process.env.REACT_APP_SSR_EXPORT_HTML_URL;
+        
+        if (!url) {
+            reject(new Error('REACT_APP_SSR_EXPORT_HTML_URL is not configured'));
+            return;
+        }
 
-export default exportHtmlService;
+        axiosInstance
+            .post<GenerateHtmlResponse>(url, { app: jsx }, { 
+                headers: { "Content-Type": "application/json" } 
+            })
+            .then(response => {
+                if (response) {
+                    resolve(response.data);
+                } else {
+                    reject(response);
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                reject(error);
+            });
+    });
+};

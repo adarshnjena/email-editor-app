@@ -8,7 +8,7 @@ import UndoIcon from "@material-ui/icons/Undo";
 import RedoIcon from "@material-ui/icons/Redo";
 import SaveAltIcon from "@material-ui/icons/SaveAlt";
 import { SvgIcon } from "@material-ui/core";
-import ExportImportDialog from "./ExportImportDialog";
+import { ExportImportDialog } from "./ExportImportDialog";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -145,7 +145,15 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export function Footer({ onPreviewOpen, onHtmlOpen, editorState, htmlContent, onImportSuccess }) {
+interface FooterProps {
+    onPreviewOpen?: () => void;
+    onHtmlOpen?: () => void;
+    editorState?: any;
+    htmlContent?: string;
+    onImportSuccess?: (data: any) => void;
+}
+
+export function Footer({ onPreviewOpen, onHtmlOpen, editorState, htmlContent, onImportSuccess }: FooterProps) {
     const classes = useStyles();
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));

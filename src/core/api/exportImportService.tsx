@@ -246,7 +246,7 @@ const generateFilename = (prefix = 'email-template') => {
     return `${prefix}-${timestamp}`;
 };
 
-const exportImportService = {
+export {
     exportAsJSON,
     exportAsHTML,
     exportAsEmailTemplate,
@@ -254,5 +254,3 @@ const exportImportService = {
     validateEditorState,
     generateFilename
 };
-
-export default exportImportService; 

@@ -15,7 +15,12 @@ const useStyles = makeStyles(() => ({
     }
 }));
 
-export default function Design({ editorState, onHtmlOpen }) {
+interface DesignProps {
+    editorState?: any;
+    onHtmlOpen?: () => void;
+}
+
+export function Design({ editorState, onHtmlOpen }: DesignProps) {
     const { actions, enabled, canUndo, canRedo, connectors, rootNode } = useEditor(
         (state, query) => ({
             enabled: state.options.enabled,

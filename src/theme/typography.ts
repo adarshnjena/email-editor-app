@@ -83,4 +83,4 @@ const typography: TypographyOptions = {
   }
 };
 
-export default typography;
+export { typography };

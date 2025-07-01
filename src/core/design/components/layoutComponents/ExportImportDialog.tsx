@@ -20,7 +20,14 @@ import PublishIcon from "@material-ui/icons/Publish";
 import CodeIcon from "@material-ui/icons/Code";
 import EmailIcon from "@material-ui/icons/Email";
 import DescriptionIcon from "@material-ui/icons/Description";
-import exportImportService from "../../../api/exportImportService";
+import { 
+    exportAsJSON,
+    exportAsHTML,
+    exportAsEmailTemplate,
+    importFromJSON,
+    validateEditorState,
+    generateFilename
+} from "../../../api/exportImportService";
 
 const useStyles = makeStyles(theme => ({
     dialog: {
@@ -113,8 +120,8 @@ export function ExportImportDialog({
     const handleExportJSON = async () => {
         try {
             setLoading(true);
-            const filename = exportImportService.generateFilename('email-template');
-            await exportImportService.exportAsJSON(editorState, filename);
+            const filename = generateFilename('email-template');
+            await exportAsJSON(editorState, filename);
             setMessage({ type: 'success', text: 'Template exported as JSON successfully!' });
         } catch (error: any) {
             setMessage({ type: 'error', text: 'Failed to export JSON: ' + (error?.message || error) });
@@ -129,8 +136,8 @@ export function ExportImportDialog({
             if (!htmlContent) {
                 throw new Error('No HTML content available. Please generate preview first.');
             }
-            const filename = exportImportService.generateFilename('email-template');
-            await exportImportService.exportAsHTML(htmlContent, filename);
+            const filename = generateFilename('email-template');
+            await exportAsHTML(htmlContent, filename);
             setMessage({ type: 'success', text: 'HTML exported successfully!' });
         } catch (error: any) {
             setMessage({ type: 'error', text: 'Failed to export HTML: ' + (error?.message || error) });
@@ -145,8 +152,8 @@ export function ExportImportDialog({
             if (!htmlContent) {
                 throw new Error('No HTML content available. Please generate preview first.');
             }
-            const filename = exportImportService.generateFilename('email-template');
-            await exportImportService.exportAsEmailTemplate(htmlContent, filename);
+            const filename = generateFilename('email-template');
+            await exportAsEmailTemplate(htmlContent, filename);
             setMessage({ type: 'success', text: 'Email template exported successfully!' });
         } catch (error: any) {
             setMessage({ type: 'error', text: 'Failed to export email template: ' + (error?.message || error) });
@@ -158,10 +165,10 @@ export function ExportImportDialog({
     const handleImportJSON = async () => {
         try {
             setLoading(true);
-            const result: any = await exportImportService.importFromJSON();
+            const result: any = await importFromJSON();
             
             if (result.success) {
-                const validation = exportImportService.validateEditorState(result.data);
+                const validation = validateEditorState(result.data);
                 
                 if (validation.valid) {
                     onImportSuccess(result.data);
@@ -297,4 +304,4 @@ export function ExportImportDialog({
     );
 }
 
-export default ExportImportDialog; 
+// ExportImportDialog is already exported above with named export 

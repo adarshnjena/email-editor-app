@@ -1,8 +1,8 @@
-import exportHtmlService from "../api/exportHtmlService";
+import { generateHtml } from "../api/exportHtmlService";
 
-export async function renderHtml(craftNodes) {
+export async function renderHtml(craftNodes: any) {
     try {
-        const response = await exportHtmlService.generateHtml(craftNodes);
+        const response = await generateHtml(craftNodes);
         return response;
     } catch (err) {
         throw err;

@@ -19,6 +19,12 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "types": [
+      "node",
+      "react",
+      "react-dom",
+      "jest"
+    ],
     "noImplicitAny": false,
     "noImplicitThis": false,
     "strictNullChecks": false,

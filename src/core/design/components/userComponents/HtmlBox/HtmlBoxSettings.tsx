@@ -7,7 +7,7 @@ import {
     MarginAccordion,
     PaddingAccordion
 } from "../UtilComponents/SettingsUtils";
-import Editor from "../../../../components/AceEditor";
+import { Editor } from "../../../../components/AceEditor";
 import { CustomAccordion } from "../UtilComponents/Accordion";
 import { MARGIN, PADDING } from "../Defaults";
 

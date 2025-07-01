@@ -1,6 +1,6 @@
 import _ from "lodash";
 import { colors, createTheme as createMuiTheme, responsiveFontSizes, Theme } from "@material-ui/core";
-import typography from "./typography";
+import { typography } from "./typography";
 import { softShadows, strongShadows } from "./shadows";
 import { THEMES, Settings } from "../context/SettingsContext";
 

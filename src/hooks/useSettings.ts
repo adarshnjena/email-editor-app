@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import SettingsContext from '../context/SettingsContext';
+import { SettingsContext } from '../context/SettingsContext';
 
-export default function useSettings() {
+export function useSettings() {
   const context = useContext(SettingsContext);
 
   if (context === undefined) {

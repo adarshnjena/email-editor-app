@@ -2,18 +2,6 @@
 
 You are working on a React-based frontend application using modern best practices. Follow these rules strictly to maintain code quality and consistency.
 
-## Technology Stack & Dependencies
-
-- **Framework**: React with TypeScript
-- **Build Tool**: Vite
-- **State Management**: React Query for server state, Context API for local/global state
-- **Styling**: TailwindCSS with utility classes
-- **UI Components**: Radix UI primitives with custom components
-- **Form Management**: React Hook Form with Zod validation
-- **Routing**: React Router v6
-- **API Client**: Axios
-- **Testing**: Jest and React Testing Library
-
 ## Component Standards
 
 ### Component Structure

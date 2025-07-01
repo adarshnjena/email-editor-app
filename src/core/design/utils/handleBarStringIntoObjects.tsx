@@ -63,4 +63,4 @@ function convertHandlebarStringToObject(tmp1) {
     ans = JSON.stringify(finalObject, null, 4);
     return ans;
 }
-export default convertHandlebarStringToObject;
+export { convertHandlebarStringToObject };
