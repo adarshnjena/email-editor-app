@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+build/
+dist/
+
+# Public assets
+public/
+
+# Generated files
+*.min.js
+*.min.css
+
+# Service worker
+src/serviceWorker.js
+
+# Test coverage
+coverage/
+
+# IDE files
+.vscode/
+.idea/
+
+# Config files
+config-overrides.js 
