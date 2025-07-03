@@ -129,7 +129,6 @@ export function EmailEditor({
             window.__version = versionToImport;
             window.location.reload();
         } catch (error) {
-            console.error('Error handling import:', error);
             const errorMessage = error instanceof Error ? error.message : 'Unknown error';
             alert('Error importing template: ' + errorMessage);
         }
@@ -200,7 +199,6 @@ function EditorSaveModule({ triggerFetchState, getState, version, onStateUpdate 
             const craftNodes = JSON.parse(json);
             html = await renderHtml(craftNodes);
         } catch (err) {
-            console.log(err);
         }
 
         const result = {

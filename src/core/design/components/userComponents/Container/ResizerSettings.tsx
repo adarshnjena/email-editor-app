@@ -31,7 +31,6 @@ interface ResizerSettingsProps {
 }
 
 export const ResizerSettings: React.FC<ResizerSettingsProps> = ({ id, isParent }) => {
-    // console.log(id);
     const {
         actions: { setProp },
         state,
@@ -68,44 +67,6 @@ export const ResizerSettings: React.FC<ResizerSettingsProps> = ({ id, isParent }
                 defaultImage={ContainerDefaultProps.style.backgroundImage}
             />
             <BorderAccordion props={props} setProp={handleSetProp} />
-            {/* <CustomAccordion
-                title="Display"
-                children={
-                    <Box my={2} mr={1} display="flex" flexDirection="column">
-                        <Typography variant="caption" color="textSecondary">
-                            Display
-                        </Typography>
-                        <TextField
-                            variant="outlined"
-                            value={props.style.display}
-                            onChange={e => {
-                                e.persist();
-                                const newValue = e.target.value.toLowerCase();
-                                setProp(props => {
-                                    if (newValue === "block") {
-                                        props.style.display = "block";
-                                        props.style.flexWrap = "nowrap";
-                                    } else {
-                                        props.style.display = "flex";
-                                        props.style.flexWrap = "wrap";
-                                    }
-                                });
-                            }}
-                            fullWidth
-                            margin="dense"
-                            size="small"
-                            select
-                        >
-                            <MenuItem key={1} value={"block"}>
-                                {"Block"}
-                            </MenuItem>
-                            <MenuItem key={2} value={"flex"}>
-                                {"Flex"}
-                            </MenuItem>
-                        </TextField>
-                    </Box>
-                }
-            /> */}
         </>
     );
 };

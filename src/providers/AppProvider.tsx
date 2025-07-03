@@ -10,11 +10,7 @@ interface AppProviderProps {
 
 export function AppProvider({ children, settings }: AppProviderProps) {
     const handleError = (error: Error, errorInfo: React.ErrorInfo) => {
-        // Log error to external service in production
-        console.error('Application Error:', error, errorInfo);
-        
-        // Here you could send to error tracking service like Sentry
-        // logErrorToService(error, errorInfo);
+
     };
 
     return (

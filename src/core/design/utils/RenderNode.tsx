@@ -89,7 +89,6 @@ export const RenderNode = ({ render }) => {
             try {
                 src = query.node(nodeId).get();
             } catch (error) {
-                console.warn('Failed to query selected node:', nodeId, error);
                 src = {};
             }
         }
@@ -113,23 +112,6 @@ export const RenderNode = ({ render }) => {
             if (dom && id !== ROOT_NODE) {
                 dom.style.position = "relative";
                 dom.style.transition = "all 100ms ease-out";
-
-                // dom.style.borderStyle = "solid";
-                // dom.style.borderColor = "transparent";
-                // dom.style.borderWidth = "2px";
-                // dom.style.transition = "all 100ms ease-out";
-                // dom.style.boxShadow = null;
-                // dom.style.borderRadius = null;
-                // if (isHover || isActive) {
-                //     dom.style.borderRadius = "2px";
-                //     if (isActive) {
-                //         dom.style.borderColor = primaryTransparent;
-                //         // dom.style.boxShadow = "0 0 6px " + theme.palette.primary.main + "AA";
-                //     } else {
-                //         dom.style.borderColor = theme.palette.text.secondary + "DD";
-                //         // dom.style.boxShadow = "0 0 6px " + theme.palette.text.primary + "AA";
-                //     }
-                // }
             }
         },
         [dom, isHover, isActive]

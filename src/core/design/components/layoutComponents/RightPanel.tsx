@@ -227,7 +227,6 @@ export function RightPanel({ ...rest }: RightPanelProps) {
                     };
                 }
             } catch (error) {
-                console.warn('Failed to query node:', currentNodeId, error);
                 selected = null;
             }
         }
@@ -243,7 +242,6 @@ export function RightPanel({ ...rest }: RightPanelProps) {
     };
 
     const handleAddComponent = ({ newNode, isCanvas = false }) => {
-        console.log('Adding component:', newNode.displayName || newNode.name);
     };
 
     const BodySettings =

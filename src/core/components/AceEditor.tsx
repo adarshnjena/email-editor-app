@@ -10,20 +10,6 @@ import "ace-builds/src-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/ext-searchbox";
 import AceEditor from "react-ace";
 
-// export class CustomHighlightRules extends window.ace.acequire("ace/mode/text_highlight_rules").TextHighlightRules {
-//   constructor() {
-//     super();
-//     this.$rules = {
-//       start: [
-//         {
-//           token: "keyword",
-//           regex: "{{(\s)*\w+(\s)*}}"
-//         }
-//       ]
-//     };
-//   }
-// }
-
 interface EditorProps {
     className?: string;
     value?: string;

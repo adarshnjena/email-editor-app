@@ -31,11 +31,6 @@ export const Video = ({ props, style, parentStyle, ...rest }) => {
         >
             {props.src ? (
                 <>
-                    {/* <PlayCircleOutlineOutlinedIcon
-                        htmlColor="#f5f5f5"
-                        fontSize="large"
-                        style={{ position: "absolute" }}
-                    /> */}
                     <video style={style} controls>
                         <source src={props.src} type="video/mp4" />
                         Your browser does not support HTML video.
@@ -47,13 +42,6 @@ export const Video = ({ props, style, parentStyle, ...rest }) => {
                     src={`https://raven-images.s3.ap-south-1.amazonaws.com/images/placeholder_video.jpg`}
                 />
             )}
-            {/* <VideoThumbnail
-                videoUrl={videoUrl}
-                thumbnailHandler={thumbnail => console.log(typeof thumbnail)}
-                width={356}
-                height={200}
-                style={style}
-            /> */}
         </Grid>
     );
 };

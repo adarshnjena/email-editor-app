@@ -7,14 +7,6 @@ export const renderNodeUtils = ({ isSelected, src, query: { node, parseFreshNode
             let index = childrenArray.indexOf(src.id);
 
             if (index - 1 < 0) {
-                // let grandParent = node(parent).get().data.parent;
-                // if (!grandParent || !node(grandParent).isCanvas()) {
-                //     return;
-                // }
-                // console.log(node(grandParent).isCanvas());
-                // childrenArray = node(grandParent).descendants(false,'childNodes');
-                // index = childrenArray.indexOf(parent);
-                // actions.move(id, grandParent, index);
                 return;
             } else {
                 actions.move(src.id, trg, index - 1);
@@ -27,14 +19,6 @@ export const renderNodeUtils = ({ isSelected, src, query: { node, parseFreshNode
             let childrenArray = trg ? node(trg).descendants(false, "childNodes") : [];
             let index = childrenArray.indexOf(src.id);
             if (index + 1 >= childrenArray.length) {
-                // let grandParent = node(parent).get().data.parent;
-                // if (!grandParent || !node(grandParent).isCanvas()) {
-                //     return;
-                // }
-                // console.log(node(grandParent).isCanvas());
-                // childrenArray = node(grandParent).descendants(false,'childNodes');
-                // index = childrenArray.indexOf(parent);
-                // actions.move(id, grandParent, index + 1);
                 return;
             } else {
                 actions.move(src.id, trg, index + 2);
@@ -52,10 +36,7 @@ export const renderNodeUtils = ({ isSelected, src, query: { node, parseFreshNode
             let tmp = parseFreshNode({
                 data: { type: newNode, isCanvas: Boolean(isCanvas) }
             }).toNode();
-            
-            // Fix insertion logic: 
-            // isDown=false (adding above): insert at current index
-            // isDown=true (adding below): insert at index + 1
+
             const insertIndex = isDown ? index + 1 : index;
             actions.add(tmp, trg, insertIndex);
         },

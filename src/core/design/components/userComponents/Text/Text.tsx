@@ -8,15 +8,6 @@ import { TextDefaultProps, TextSettings } from "./TextSettings";
 import { editorConfig } from "./editorConfig";
 import { useTheme } from "@material-ui/core";
 
-// BraftEditor.use(
-//     ColorPicker({
-//         includeEditors: ["editor-with-color-picker"],
-//         theme: "dark",
-//         clearButtonText: "Clear",
-//         closeButtonText: "Close"
-//     })
-// );
-
 let customStyleMap = {
     STRIKETHROUGH: {
         textDecoration: "line-through"

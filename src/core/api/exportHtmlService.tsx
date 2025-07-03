@@ -26,7 +26,6 @@ export const generateHtml = (jsx: any): Promise<any> => {
                 }
             })
             .catch(error => {
-                console.log(error);
                 reject(error);
             });
     });

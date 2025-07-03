@@ -14,54 +14,6 @@ const FONT_FAMILIES = [
             "-apple-system,BlinkMacSystemFont,‘Segoe UI’,Roboto,Helvetica,Arial,sans-serif,‘Apple Color Emoji’,‘Segoe UI Emoji’,‘Segoe UI Symbol’"
     }
 ];
-// export function FontFamily({ editorState, setEditorState, editorInstance }) {
-//     const [anchorEl, setAnchorEl] = React.useState(null);
-//     const theme = useTheme();
-//     const getCurFontFamily = () => {
-//         let fontFamily = FONT_FAMILIES[0].name;
-//         for (let item of FONT_FAMILIES) {
-//             if (ContentUtils.selectionHasInlineStyle(editorState, `FONTFAMILY-${item.name}`)) {
-//                 fontFamily = item.name;
-//                 break;
-//             }
-//         }
-
-//         return fontFamily;
-//     };
-//     console.log(editorState.getCurrentInlineStyle());
-//     return (
-//         <>
-//             <TextField
-//                 variant="filled"
-//                 value={getCurFontFamily()}
-//                 onChange={e => {
-//                     e.persist();
-//                     editorInstance.current.setValue(
-//                         ContentUtils.toggleSelectionFontFamily(editorState, e.target.value)
-//                     );
-//                     editorInstance.current.requestFocus();
-//                 }}
-//                 fullWidth
-//                 margin="dense"
-//                 select
-//             >
-//                 {FONT_FAMILIES.map((val, i) => {
-//                     return (
-//                         <MenuItem key={i} value={val.name} style={{ fontFamily: val.family }}>
-//                             {val.name}
-//                         </MenuItem>
-//                     );
-//                 })}
-//             </TextField>
-//         </>
-//     );
-// }
-// const hooks = {
-//     "toggle-font-size": prop => {
-//         console.log(prop);
-//         return `calc(${prop} / var(--size-divisor))`;
-//     }
-// };
 function FontSize({ editorState, setEditorState, editorInstance }) {
     const getCurFontSize = () => {
         let fontSize = 16;

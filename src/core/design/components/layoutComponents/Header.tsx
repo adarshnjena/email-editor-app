@@ -43,7 +43,6 @@ export function Header({}) {
           </Button>
         </Toolbar>
       </AppBar>
-      {/* {cnfOpen && <ConfirmationDialog {...cnfArgs} />} */}
     </>
   );
 }
