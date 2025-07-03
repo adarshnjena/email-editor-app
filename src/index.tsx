@@ -57,7 +57,6 @@ function EmailEditorApp(): JSX.Element {
         } catch (err: any) {
             const error = new Error(`Invalid Editor State.\n${err.message}`);
             error.stack = err.stack;
-            console.log(error);
             return null;
         }
         setEditorState({ json: stateJson, version: stateVersion });
@@ -115,13 +114,11 @@ function EmailEditorApp(): JSX.Element {
     }
 
     const onPreviewOpen = () => {
-        // postMessage("previewOpen", true);
         setMode("preview");
         setTriggerFetchState(true);
     };
 
     const onHtmlOpen = () => {
-        // postMessage("htmlOpen", true);
         setMode("html");
         setTriggerFetchState(true);
     };
@@ -156,6 +153,5 @@ function EmailEditor(): JSX.Element {
 ReactDOM.render(<EmailEditor />, document.getElementById("root"));
 
 // If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

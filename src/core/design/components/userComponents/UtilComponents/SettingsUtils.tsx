@@ -347,9 +347,6 @@ export function BackgroundAccordion({ props, setProp, isSelfBg, defaultImage }) 
                     }
                     {!isBgImage ? (
                         <Box mt={2} m={1}>
-                            {/* <Typography variant="subtitle2" color="textSecondary">
-                                Background Image
-                            </Typography> */}
                             <CustomColorPicker
                                 value={getBg(false)}
                                 onChange={val => {
@@ -389,14 +386,6 @@ export function BackgroundAccordion({ props, setProp, isSelfBg, defaultImage }) 
 export function AccordionHeader({ title }) {
     return (
         <Box display="flex" alignItems="center" ml={2} mt={4} mb={1}>
-            {/* <PhotoSizeSelectSmallIcon
-                color="secondary"
-                style={{
-                    height: 15,
-                    width: 15,
-                    marginRight: 5
-                }}
-            /> */}
             <Typography variant="caption" color="secondary">
                 {title.toUpperCase()}
             </Typography>

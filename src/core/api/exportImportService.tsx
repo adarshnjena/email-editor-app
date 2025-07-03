@@ -3,7 +3,6 @@ const exportAsJSON = (editorState, filename = 'email-template') => {
     return new Promise((resolve, reject) => {
         try {
             // Debug: Log what we received
-            console.log('Export function received:', typeof editorState, editorState);
             
             // Handle different editor state formats
             let exportData;
@@ -17,8 +16,7 @@ const exportAsJSON = (editorState, filename = 'email-template') => {
                             version: editorState.version || '1.0.0'
                         };
                     } catch (parseError) {
-                        console.error('Error parsing JSON string:', parseError);
-                        // If parsing fails, export the raw structure
+                    // If parsing fails, export the raw structure
                         exportData = editorState;
                     }
                 } else {
@@ -34,9 +32,6 @@ const exportAsJSON = (editorState, filename = 'email-template') => {
             
             const dataStr = JSON.stringify(exportData, null, 2);
             
-            // Debug: Log the data being exported
-            console.log('Exporting editor state:', exportData);
-            console.log('Serialized JSON length:', dataStr.length);
             
             const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
             
@@ -50,7 +45,6 @@ const exportAsJSON = (editorState, filename = 'email-template') => {
             
             resolve({ success: true, message: 'JSON exported successfully' });
         } catch (error) {
-            console.error('Error exporting JSON:', error);
             reject({ success: false, message: 'Failed to export JSON', error });
         }
     });
@@ -77,7 +71,6 @@ const exportAsHTML = (htmlContent, filename = 'email-template') => {
             
             resolve({ success: true, message: 'HTML exported successfully' });
         } catch (error) {
-            console.error('Error exporting HTML:', error);
             reject({ success: false, message: 'Failed to export HTML', error });
         }
     });
@@ -133,7 +126,6 @@ const exportAsEmailTemplate = (htmlContent, filename = 'email-template') => {
             
             resolve({ success: true, message: 'Email template exported successfully' });
         } catch (error) {
-            console.error('Error exporting email template:', error);
             reject({ success: false, message: 'Failed to export email template', error });
         }
     });

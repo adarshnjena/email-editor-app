@@ -27,9 +27,3 @@ export const getElementDimensions = function(element) {
     };
 };
 
-// export function titleCase(str) {
-//     if (str == null) {
-//         return "";
-//     }
-//     return str.toLowerCase().replace(/\b(\w)/g, s => s.toUpperCase());
-// }

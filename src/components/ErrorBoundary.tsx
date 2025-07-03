@@ -29,7 +29,6 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
         });
 
         // Log error for debugging
-        console.error('ErrorBoundary caught an error:', error, errorInfo);
 
         // Call custom error handler if provided
         if (this.props.onError) {

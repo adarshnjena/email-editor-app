@@ -96,14 +96,6 @@ export function Design({ editorState, onHtmlOpen }: DesignProps) {
                                     displayName: "Main"
                                 }}
                             >
-                                {/* <Button text="Click me" size="small" />
-
-                                <Text />
-                                <Element canvas is={Container}>
-                                    <Text />
-                                    <Button />
-                                    <Image />
-                                </Element> */}
                             </Element>
                         </BodyWrapper>
                     </Frame>

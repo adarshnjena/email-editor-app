@@ -49,7 +49,6 @@ interface ToolboxProps {
 
 export function Toolbox({ anchorEl, onClick, origin, onClose }: ToolboxProps) {
     const classes = useStyles();
-    //   console.log(anchorEl);
     const isDown = origin !== "top";
     
     // Convert origin string to valid placement value
@@ -90,7 +89,6 @@ export function Toolbox({ anchorEl, onClick, origin, onClose }: ToolboxProps) {
             }}
         >
             <Box display="flex">
-                {/* <Box mt={1} /> */}
                 <Tooltip arrow title="Text" aria-label="text" placement={placement}>
                     <IconButton
                         onClick={() => {

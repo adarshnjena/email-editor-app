@@ -344,7 +344,6 @@ export function createTheme(settings: Partial<Settings> = {}): Theme {
     let themeConfig = themeConfigs.find(theme => theme.name === settings.theme);
 
     if (!themeConfig) {
-        console.warn(new Error(`The theme ${settings.theme} is not valid`));
         [themeConfig] = themeConfigs;
     }
 

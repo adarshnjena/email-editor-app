@@ -42,12 +42,10 @@ function saveEditor() {
 window.addEventListener("message", (event) => {
     switch(event.data.message) {
         case "editorLoaded":
-            console.log("Editor is ready");
             break;
         case "savedState":
             const editorData = event.data.value;
             // Save editorData.json and editorData.html
-            console.log("Editor state saved:", editorData);
             break;
     }
 });
@@ -70,7 +68,6 @@ function MyApp() {
     const [editorState, setEditorState] = useState(null);
 
     const handleSave = (editorData) => {
-        console.log('Saved:', editorData);
         // Save editorData.json and editorData.html to your backend
     };
 
@@ -206,7 +203,6 @@ export class EmailEditorComponent {
 
   onSave(data: any) {
     // Handle saved data
-    console.log('Editor saved:', data);
   }
 }
 ```

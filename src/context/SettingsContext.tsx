@@ -54,7 +54,6 @@ export function SettingsProvider({ settings, children }: SettingsProviderProps) 
         } catch (err) {
             const errorMessage = err instanceof Error ? err.message : 'Failed to save settings';
             setError(errorMessage);
-            console.error('Error saving settings:', err);
         } finally {
             setIsLoading(false);
         }
@@ -70,7 +69,6 @@ export function SettingsProvider({ settings, children }: SettingsProviderProps) 
         } catch (err) {
             const errorMessage = err instanceof Error ? err.message : 'Failed to reset settings';
             setError(errorMessage);
-            console.error('Error resetting settings:', err);
         } finally {
             setIsLoading(false);
         }
@@ -80,7 +78,6 @@ export function SettingsProvider({ settings, children }: SettingsProviderProps) 
         try {
             document.dir = currentSettings.direction;
         } catch (err) {
-            console.warn('Failed to set document direction:', err);
         }
     }, [currentSettings.direction]);
 
