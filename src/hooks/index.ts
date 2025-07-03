@@ -1,2 +1,2 @@
 export { useIsMountedRef } from './useIsMountedRef';
-export { useSettings } from './useSettings'; 
+export { useSettings } from './useSettings';

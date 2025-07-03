@@ -2,338 +2,339 @@
 
 /* Global improvements */
 .craftjs-renderer {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', sans-serif;
 }
 
 /* Modern form inputs */
 .MuiTextField-root {
-    margin-bottom: 16px !important;
+  margin-bottom: 16px !important;
 }
 
 .MuiOutlinedInput-root {
-    border-radius: 8px !important;
-    transition: all 0.2s ease-in-out !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease-in-out !important;
 }
 
 .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
-    border-color: #bdbdbd !important;
+  border-color: #bdbdbd !important;
 }
 
 .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-    border-color: #424242 !important;
-    border-width: 2px !important;
+  border-color: #424242 !important;
+  border-width: 2px !important;
 }
 
 /* Modern buttons */
 .MuiButton-root {
-    border-radius: 8px !important;
-    text-transform: none !important;
-    font-weight: 600 !important;
-    box-shadow: none !important;
-    transition: all 0.2s ease-in-out !important;
+  border-radius: 8px !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  box-shadow: none !important;
+  transition: all 0.2s ease-in-out !important;
 }
 
 .MuiButton-contained {
-    background: linear-gradient(135deg, #757575 0%, #424242 100%) !important;
-    color: #ffffff !important;
+  background: linear-gradient(135deg, #757575 0%, #424242 100%) !important;
+  color: #ffffff !important;
 }
 
 .MuiButton-contained:hover {
-    background: linear-gradient(135deg, #616161 0%, #212121 100%) !important;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  background: linear-gradient(135deg, #616161 0%, #212121 100%) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
 }
 
 .MuiButton-outlined {
-    border: 2px solid #e0e0e0 !important;
-    color: #424242 !important;
+  border: 2px solid #e0e0e0 !important;
+  color: #424242 !important;
 }
 
 .MuiButton-outlined:hover {
-    background-color: #fafafa !important;
-    border-color: #bdbdbd !important;
+  background-color: #fafafa !important;
+  border-color: #bdbdbd !important;
 }
 
 /* Modern tabs */
 .MuiTabs-root {
-    border-bottom: 1px solid #e0e0e0 !important;
+  border-bottom: 1px solid #e0e0e0 !important;
 }
 
 .MuiTab-root {
-    text-transform: none !important;
-    font-weight: 600 !important;
-    font-size: 14px !important;
-    min-height: 56px !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  min-height: 56px !important;
 }
 
 .MuiTab-root.Mui-selected {
-    color: #424242 !important;
+  color: #424242 !important;
 }
 
 .MuiTabs-indicator {
-    background-color: #424242 !important;
-    height: 3px !important;
-    border-radius: 2px !important;
+  background-color: #424242 !important;
+  height: 3px !important;
+  border-radius: 2px !important;
 }
 
 /* Modern cards and panels */
 .MuiPaper-root {
-    border-radius: 12px !important;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
 }
 
 .MuiPaper-elevation2 {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
 }
 
 /* Modern accordions */
 .MuiAccordion-root {
-    border: 1px solid #e0e0e0 !important;
-    border-radius: 8px !important;
-    margin-bottom: 8px !important;
-    box-shadow: none !important;
+  border: 1px solid #e0e0e0 !important;
+  border-radius: 8px !important;
+  margin-bottom: 8px !important;
+  box-shadow: none !important;
 }
 
 .MuiAccordion-root:before {
-    display: none !important;
+  display: none !important;
 }
 
 .MuiAccordionSummary-root {
-    background-color: #fafafa !important;
-    border-radius: 8px 8px 0 0 !important;
-    padding: 0 16px !important;
+  background-color: #fafafa !important;
+  border-radius: 8px 8px 0 0 !important;
+  padding: 0 16px !important;
 }
 
 .MuiAccordionSummary-content {
-    margin: 12px 0 !important;
+  margin: 12px 0 !important;
 }
 
 .MuiAccordionDetails-root {
-    padding: 16px !important;
-    background-color: #ffffff !important;
+  padding: 16px !important;
+  background-color: #ffffff !important;
 }
 
 /* Modern tooltips */
 .MuiTooltip-tooltip {
-    background-color: #212121 !important;
-    font-size: 12px !important;
-    border-radius: 6px !important;
-    padding: 8px 12px !important;
+  background-color: #212121 !important;
+  font-size: 12px !important;
+  border-radius: 6px !important;
+  padding: 8px 12px !important;
 }
 
 .MuiTooltip-arrow {
-    color: #212121 !important;
+  color: #212121 !important;
 }
 
 /* Modern lists */
 .MuiListItem-root {
-    border-radius: 8px !important;
-    margin-bottom: 4px !important;
+  border-radius: 8px !important;
+  margin-bottom: 4px !important;
 }
 
 .MuiListItem-root:hover {
-    background-color: #fafafa !important;
+  background-color: #fafafa !important;
 }
 
 .MuiListItemIcon-root {
-    min-width: 40px !important;
-    color: #757575 !important;
+  min-width: 40px !important;
+  color: #757575 !important;
 }
 
 /* Modern dividers */
 .MuiDivider-root {
-    background-color: #e0e0e0 !important;
+  background-color: #e0e0e0 !important;
 }
 
 /* Component specific styles */
 .email-editor-component-button {
-    padding: 16px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    background-color: #ffffff;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 
 .email-editor-component-button:hover {
-    border-color: #424242;
-    background-color: #fafafa;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #424242;
+  background-color: #fafafa;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .email-editor-component-icon {
-    font-size: 24px;
-    color: #424242;
+  font-size: 24px;
+  color: #424242;
 }
 
 .email-editor-component-label {
-    font-size: 12px;
-    font-weight: 500;
-    color: #424242;
-    text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: #424242;
+  text-align: center;
 }
 
 /* Email canvas improvements */
 .email-canvas {
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e0e0e0;
-    overflow: hidden;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
 }
 
 /* Settings panel improvements */
 .settings-section {
-    padding: 16px 24px;
+  padding: 16px 24px;
 }
 
 .settings-section-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: #212121;
-    margin-bottom: 16px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #212121;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .settings-form-group {
-    margin-bottom: 16px;
+  margin-bottom: 16px;
 }
 
 .settings-label {
-    font-size: 13px;
-    font-weight: 500;
-    color: #424242;
-    margin-bottom: 8px;
-    display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #424242;
+  margin-bottom: 8px;
+  display: block;
 }
 
 /* Color picker improvements */
 .color-picker-container {
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 8px;
-    background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 8px;
+  background-color: #ffffff;
 }
 
 /* Modern slider styles */
 .MuiSlider-root {
-    color: #424242 !important;
+  color: #424242 !important;
 }
 
 .MuiSlider-thumb {
-    width: 20px !important;
-    height: 20px !important;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+  width: 20px !important;
+  height: 20px !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
 }
 
 .MuiSlider-track {
-    height: 6px !important;
-    border-radius: 3px !important;
+  height: 6px !important;
+  border-radius: 3px !important;
 }
 
 .MuiSlider-rail {
-    height: 6px !important;
-    border-radius: 3px !important;
-    background-color: #e0e0e0 !important;
+  height: 6px !important;
+  border-radius: 3px !important;
+  background-color: #e0e0e0 !important;
 }
 
 /* Typography improvements */
 .modern-title {
-    font-size: 16px;
-    font-weight: 600;
-    color: #212121;
-    margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #212121;
+  margin-bottom: 8px;
 }
 
 .modern-subtitle {
-    font-size: 12px;
-    color: #757575;
-    margin-bottom: 16px;
+  font-size: 12px;
+  color: #757575;
+  margin-bottom: 16px;
 }
 
 .modern-text {
-    font-size: 14px;
-    color: #424242;
-    line-height: 1.5;
+  font-size: 14px;
+  color: #424242;
+  line-height: 1.5;
 }
 
 /* Responsive improvements */
 @media (max-width: 768px) {
-    .email-editor-main-container {
-        flex-direction: column;
-    }
-    
-    .email-editor-right-panel {
-        width: 100% !important;
-        height: 50vh;
-    }
-    
-    .email-editor-design-section {
-        height: 50vh;
-    }
+  .email-editor-main-container {
+    flex-direction: column;
+  }
+
+  .email-editor-right-panel {
+    width: 100% !important;
+    height: 50vh;
+  }
+
+  .email-editor-design-section {
+    height: 50vh;
+  }
 }
 
 /* Animation improvements */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .fade-in {
-    animation: fadeIn 0.3s ease-in-out;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 /* Focus improvements */
 .MuiFormControl-root:focus-within {
-    transform: none !important;
+  transform: none !important;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f5f5f5;
-    border-radius: 4px;
+  background: #f5f5f5;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #bdbdbd;
-    border-radius: 4px;
+  background: #bdbdbd;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #9e9e9e;
+  background: #9e9e9e;
 }
 
 /* Loading states */
 .loading-state {
-    opacity: 0.6;
-    pointer-events: none;
-    filter: grayscale(100%);
+  opacity: 0.6;
+  pointer-events: none;
+  filter: grayscale(100%);
 }
 
 /* Success states */
 .success-state {
-    border-color: #424242 !important;
-    box-shadow: 0 0 0 3px rgba(66, 66, 66, 0.1) !important;
+  border-color: #424242 !important;
+  box-shadow: 0 0 0 3px rgba(66, 66, 66, 0.1) !important;
 }
 
 /* Error states */
 .error-state {
-    border-color: #212121 !important;
-    box-shadow: 0 0 0 3px rgba(33, 33, 33, 0.1) !important;
-} 
+  border-color: #212121 !important;
+  box-shadow: 0 0 0 3px rgba(33, 33, 33, 0.1) !important;
+}

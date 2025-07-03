@@ -1,28 +1,28 @@
-import { useNode } from "@craftjs/core";
-import React from "react";
-import { AccordionHeader, BackgroundAccordion } from "../UtilComponents";
+import { useNode } from '@craftjs/core';
+import React from 'react';
+import { AccordionHeader, BackgroundAccordion } from '../UtilComponents';
 export function BodyWrapperSettings() {
-    const {
-        actions: { setProp },
-        props
-    } = useNode(node => ({
-        props: node.data.props
-    }));
-    return (
-        <>
-            <AccordionHeader title={"Decoration"} />
-            <BackgroundAccordion
-                props={props}
-                setProp={setProp}
-                isSelfBg={true}
-                defaultImage={BodyWrapperDefaultProps.style.backgroundImage}
-            />
-        </>
-    );
+  const {
+    actions: { setProp },
+    props,
+  } = useNode((node) => ({
+    props: node.data.props,
+  }));
+  return (
+    <>
+      <AccordionHeader title={'Decoration'} />
+      <BackgroundAccordion
+        props={props}
+        setProp={setProp}
+        isSelfBg={true}
+        defaultImage={BodyWrapperDefaultProps.style.backgroundImage}
+      />
+    </>
+  );
 }
 export const BodyWrapperDefaultProps = {
-    style: {
-        backgroundColor: "#f5f5f5",
-        backgroundImage: ""
-    }
+  style: {
+    backgroundColor: '#f5f5f5',
+    backgroundImage: '',
+  },
 };

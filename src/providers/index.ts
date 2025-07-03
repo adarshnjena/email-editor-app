@@ -1,2 +1,2 @@
 export { AppProvider } from './AppProvider';
-export { ErrorBoundary } from '../components'; 
+export { ErrorBoundary } from '../components';

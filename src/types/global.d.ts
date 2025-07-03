@@ -56,7 +56,7 @@ declare module 'lzutf8' {
 
 declare module 'react-perfect-scrollbar' {
   import { Component } from 'react';
-  
+
   interface PerfectScrollbarProps {
     className?: string;
     style?: React.CSSProperties;
@@ -67,7 +67,7 @@ declare module 'react-perfect-scrollbar' {
     onScrollX?: (container: any) => void;
     component?: string;
   }
-  
+
   export default class PerfectScrollbar extends Component<PerfectScrollbarProps> {}
 }
 
@@ -78,4 +78,4 @@ declare global {
   }
 }
 
-export {}; 
+export {};
